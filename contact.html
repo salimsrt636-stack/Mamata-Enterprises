@@ -317,31 +317,7 @@
         <p style="text-align: center; color: #666; margin-bottom: 20px;">
             Fill out the form below or email us directly at: <a href="mailto:salimsrt636@gmail.com" style="color: #2a5298; font-weight: bold; text-decoration: none;">salimsrt636@gmail.com</a>
         </p>
-        <form name="contact" method="POST" data-netlify="true" <form name="contact" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contact">
-
-  <div class="form-group">
-    <input type="text" name="name" required placeholder="Full Name">
-  </div>
-
-  <div class="form-group">
-    <input type="tel" name="phone" required placeholder="+91-9663728297">
-  </div>
-
-  <div class="form-group">
-    <input type="email" name="email" required placeholder="salimsrt636@mail.com">
-  </div>
-
-  <div class="form-group">
-    <input type="text" name="product" placeholder="Product">
-  </div>
-
-  <div class="form-group">
-    <textarea name="message" required></textarea>
-  </div>
-
-  <button type="submit">Send</button>
-</form>>
+        <form name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
             <input type="hidden" name="form-name" value="contact">
             <div style="margin-bottom: 25px;">
                 <h3 style="color: #2a5298; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px;">👤 Customer Details</h3>

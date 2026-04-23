@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mamata Enterprises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop') no-repeat center/cover fixed;
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        nav {
+            background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        nav a:active {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .container {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .container h2 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #e3e9f3;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(42, 82, 152, 0.2);
+            border-color: #2a5298;
+        }
+        .contact-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+        .contact-card h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        .contact-card p {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .phone-number {
+            color: #2a5298;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .call-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .call-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        .contact-section {
+            background: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .contact-section h2 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        .info-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-left: 5px solid #2a5298;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .info-box h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .language-selector {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 data-en="Mamata Enterprises" data-kn="ಮಮತ ಎಂಟರ್‌ಪ್ರೈಸೆಸ್">Mamata Enterprises</h1>
+    <h1 data-en="Contact Us" data-kn="ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ">Contact Us</h1>
+    <p data-en="Get in Touch - We're Here to Help!" data-kn="ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ - ನಾವು ಸಹಾಯ ಮಾಡಲು ಇಲ್ಲಿದ್ದೇವೆ!">Get in Touch - We're Here to Help!</p>
+</header>
+
+<nav>
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+    </div>
+    <a href="index.html" data-en="🏠 Home" data-kn="🏠 ಹೋಮ್">🏠 Home</a>
+    <a href="products.html" data-en="📦 Products" data-kn="📦 ಉತ್ಪನ್ನಗಳು">📦 Products</a>
+    <a href="contact.html" data-en="📞 Call Us" data-kn="📞 ನಮ್ಮನ್ನು ಕರೆ">📞 Call Us</a>
+</nav>
+
+<div class="container">
+    <h2>📞 Contact Information</h2>
+    
+    <div class="contact-grid">
+        <!-- Phone Number 1 -->
+        <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3>Primary Contact</h3>
+            <p>Call us for quick assistance</p>
+            <div class="phone-number">+91-9663728297</div>
+            <a href="tel:+919663728297" class="call-btn">📞 Call Now</a>
+        </div>
+
+        <!-- Phone Number 2 -->
+        <div class="contact-card">
+            <div class="contact-icon">☎️</div>
+            <h3>Secondary Contact</h3>
+            <p>Reach us anytime, anywhere</p>
+            <div class="phone-number">+91-9591904878</div>
+            <a href="tel:+919591904878" class="call-btn">📞 Call Now</a>
+        </div>
+
+        <!-- Location -->
+        <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Location</h3>
+            <p>Visit Our Store</p>
+            <p><strong>Hunasagi, Karnataka</strong></p>
+            <p style="font-size: 0.95em; color: #888;">Samudra Pumps</p>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3>💡 Quick Tips</h3>
+        <p>
+            <strong>Best time to call:</strong> Monday to Saturday, 9 AM to 6 PM<br>
+            <strong>WhatsApp:</strong> Available on both numbers for quick messages<br>
+            <strong>Emergency Support:</strong> Available on primary number
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="contact-section">
+        <h2>📧 Send Us a Message</h2>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="product">Which Product Interested?</label>
+                <input type="text" id="product" name="product" placeholder="e.g., Samudra Aqua Max 10 HP">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your inquiry..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+        </form>
+    </div>
+</div>
+
+<div class="container" style="margin-bottom: 80px;">
+    <div class="info-box">
+        <h3>🎯 Why Choose Us?</h3>
+        <ul style="margin-left: 20px; line-height: 2;">
+            <li>✓ Premium Quality Water Pumps</li>
+            <li>✓ Competitive Pricing & Best Deals</li>
+            <li>✓ Fast Delivery & Installation</li>
+            <li>✓ 2-3 Year Warranty on Products</li>
+            <li>✓ Expert Customer Support 24/7</li>
+            <li>✓ Government Subsidy Assistance</li>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Mamata Enterprises. All rights reserved.</p>
+</footer>
+
+<script>
+    // Language switching functionality
+    let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    
+    // Set initial language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        setLanguage(currentLanguage);
+    });
+    
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        
+        // Update all elements with data attributes
+        document.querySelectorAll('[data-en][data-kn]').forEach(element => {
+            if (lang === 'en') {
+                element.textContent = element.getAttribute('data-en');
+            } else if (lang === 'kn') {
+                element.textContent = element.getAttribute('data-kn');
+            }
+        });
+        
+        // Handle elements with mixed content (like links with data attributes)
+        document.querySelectorAll('[data-en]').forEach(element => {
+            if (element.getAttribute('data-kn')) {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'kn') {
+                    element.textContent = element.getAttribute('data-kn');
+                }
+            }
+        });
+        
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[onclick="setLanguage('${lang}')"]`).classList.add('active');
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+        
+        // Update font for Kannada
+        if (lang === 'kn') {
+            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans Kannada'";
+        } else {
+            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const product = document.getElementById('product').value || 'General Inquiry';
+        
+        alert('Thank you for your inquiry, ' + name + '!\n\n' +
+              'We will contact you soon at: ' + phone + '\n\n' +
+              'Or you can call us directly:\n' +
+              '📱 +91-9663728297\n' +
+              '☎️ +91-9591904878');
+        
+        // Reset form
+        document.querySelector('form').reset();
+    }
+</script>
+
+<!-- Google Fonts for Kannada Support -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</body>
+</html>

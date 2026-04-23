@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamata Enterprises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop') no-repeat center/cover fixed;
+            color: #333;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: rgb(255, 255, 255);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(237, 0, 0, 0.2);
+        }   
+        header h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.984);
+        }
+        header h1:first-child {
+            font-size: 3em;
+            font-weight: bold;
+        }
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        nav {
+            background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: rgb(255, 255, 255);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: rgba(4, 4, 4, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        nav a:active {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .container {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .container h2 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+        .product {
+            background: rgb(255, 255, 255);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #2a5298;
+            transition: all 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .product h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .product p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        .product strong {
+            color: #2a5298;
+        }
+        .contact-section {
+            background: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .contact-section h2 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        .product {
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #1e3c72;
+        }
+        .modal h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            clear: both;
+        }
+        .modal-specs {
+            background: #f5f7fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .modal-specs h3 {
+            color: #2a5298;
+            margin-bottom: 15px;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        .spec-label {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .spec-value {
+            color: #2a5298;
+        }
+        .modal-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        .testimonials-section {
+            background: rgb(255, 255, 255);
+            padding: 50px 40px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .testimonials-section h2 {
+            color: #1e3c72;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2em;
+        }
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .testimonial-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
+        }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .testimonial-info h4 {
+            color: #1e3c72;
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .testimonial-info p {
+            color: #666;
+            margin: 3px 0 0 0;
+            font-size: 0.9em;
+        }
+        .stars {
+            color: #ff9800;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .testimonial-text {
+            color: #6c6a6a;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(208, 208, 208, 0.5), rgba(49, 114, 152, 0.815)), 
+                        url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1400&h=500&fit=crop') no-repeat center/cover;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin: 20px 0 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .hero-section h2 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 10px;
+        }
+        .hero-section p {
+            font-size: 1.4em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        .hero-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(42, 82, 152, 0.5);
+        }
+        .categories-section {
+            background: white;
+            padding: 50px 40px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .categories-section h2 {
+            color: #1a3c7a;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2em;
+        }
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .category-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #e3e9f3;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(42, 82, 152, 0.2);
+            border-color: #2a5298;
+        }
+        .category-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+        .category-card h3 { 
+            color: #1e3c72;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        .category-card p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .category-features {
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .category-features li {
+            color: #555;
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        .category-features li:before {
+            content: "✓ ";
+            color: #355389;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .category-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .language-selector {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            color: rgb(255, 255, 255);
+            border: 1px solid white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header id="home">
+    <h1 data-en="Mamata Enterprises Samudra Pumps Hunasagi" data-kn="ಮಮತ ಎಂಟರ್‌ಪ್ರೈಸೆಸ್ ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ಹುಣಸಗಿ">Mamata Enterprises Samudra pumps Hunasagi</h1>
+    <p data-en="Taluk: Hunasagi | District: Yadagir" data-kn="ತಾಲ್ಲೂಕು: ಹುಣಸಗಿ  | ಜಿಲ್ಲೆ: ಯಾದಗಿರಿ">Taluk: Hunasagi | District: Yadagir</p>
+    <p data-en="Your Trusted Store for Quality Products" data-kn="ನಿಮ್ಮ ಸ್ಥಾವರ ಸ್ಟೋರ್ ಗುಣಮಾನದ ಉತ್ಪನ್ನಗಳಿಗೆ">Your Trusted Store for Quality Products</p>
+</header>
+
+<nav>
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+    </div>
+    <a href="index.html" data-en="🏠 Home" data-kn="🏠 ಹೋಮ್">🏠 Home</a>
+    <a href="products.html" data-en="📦 Products" data-kn="📦 ಉತ್ಪನ್ನಗಳು">📦 Products</a>
+    <a href="contact.html" data-en="📞 Call Us" data-kn="📞 ನಮ್ಮನ್ನು ಕರೆ">📞 Call Us</a>
+</nav>
+
+<div class="container">
+    <div class="hero-section">
+        <h2 data-en="🚜 Samudra Water Pumps Dealerships" data-kn="🚜 ಸಮುದ್ರ ಜಲ ಪಂಪ್‌ಗಳ ವಿತರಣೆ">🚜 Samudra Water Pumps Dealerships</h2>
+        <p style="font-size: 1.1em; margin-bottom: 20px;" data-en="Authorized Dealers Across Karnataka" data-kn="ಕರ್ನಾಟಕದ ಅಧೀನ ಅನುಮತಿಪ್ರಾಪ್ತ ವಿತರಕಗಳು">Authorized Dealers Across Karnataka</p>
+        <div style="background: rgba(255, 255, 255, 0.229); padding: 20px; border-radius: 10px; margin: 20px 0; max-width: 600px;">
+            <p style="font-size: 1em; margin: 10px 0;"><strong data-en="Mamata Enterprises" data-kn="ಮಮತ ಎಂಟರ್‌ಪ್ರೈಸೆಸ್">Mamata Enterprises</strong> - <span data-en="Hunasagi, Yadagir District" data-kn="ಹುಣಸಗಿ, ಯಾದಗಿರಿ ಜಿಲ್ಲೆ">Hunasagi, Yadagir District</span></p>
+            <p style="font-size: 1em; margin: 10px 0;"><strong data-en="Samudra Pumps Belgaum" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ಬೆಳಗಾವಿ">Samudra Pumps Belgaum</strong> - <span data-en="Belgaum District" data-kn="ಬೆಳಗಾವಿ ಜಿಲ್ಲೆ">Belgaum District</span></p>
+            <p style="font-size: 1em; margin: 10px 0;"><strong data-en="Samudra Pumps Raichur" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ರಾಯಚೂರು">Samudra Pumps Raichur</strong> - <span data-en="Raichur District" data-kn="ರಾಯಚೂರು ಜಿಲ್ಲೆ">Raichur District</span></p>
+            <p style="font-size: 1em; margin: 10px 0;"><strong data-en="Samudra Pumps Kalaburagi" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ಕಲಬುರಗಿ">Samudra Pumps Kalaburagi</strong> - <span data-en="Kalaburagi District" data-kn="ಕಲಬುರಗಿ ಜಿಲ್ಲೆ">Kalaburagi District</span></p>
+            <p style="font-size: 1em; margin: 10px 0;"><strong data-en="Samudra Pumps Talikoti" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ತಾಳಿಕೋಟಿ">Samudra Pumps Talikoti</strong> -  <span data-en="Vijayapur District" data-kn="ವಿಜಯಪುರ ಜಿಲ್ಲೆ">Vijayapur District</span></p>
+        </div>
+        <a href="contact.html" class="hero-btn" data-en="Contact Our Dealers" data-kn="ನಮ್ಮ ವಿತರಕರನ್ನು ಸಂಪರ್ಕಿಸಿ">Contact Our Dealers</a>
+    </div>
+</div>
+
+
+
+<footer>
+    <p>&copy; 2024 Mamata Enterprises. All rights reserved.</p>
+</footer>
+
+<script>
+    // Language switching functionality
+    let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    
+    // Set initial language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        setLanguage(currentLanguage);
+    });
+    
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        
+        // Update all elements with data attributes
+        document.querySelectorAll('[data-en][data-kn]').forEach(element => {
+            if (lang === 'en') {
+                element.textContent = element.getAttribute('data-en');
+            } else if (lang === 'kn') {
+                element.textContent = element.getAttribute('data-kn');
+            }
+        });
+        
+        // Handle elements with mixed content (like links with data attributes)
+        document.querySelectorAll('[data-en]').forEach(element => {
+            if (element.getAttribute('data-kn')) {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'kn') {
+                    element.textContent = element.getAttribute('data-kn');
+                }
+            }
+        });
+        
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[onclick="setLanguage('${lang}')"]`).classList.add('active');
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+        
+        // Update font for Kannada
+        if (lang === 'kn') {
+            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans Kannada'";
+        } else {
+            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        }
+    }
+</script>
+
+<!-- Google Fonts for Kannada Support -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</body>
+</html>
+<style>
+    .billing-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-top: 40px;
+        border: 2px solid #1e3c72;
+    }
+    .bill-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    .bill-table th, .bill-table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .bill-table th {
+        background-color: #f5f7fa;
+        color: #1e3c72;
+    }
+    .total-area {
+        text-align: right;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #1e3c72;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+    }
+    .print-btn {
+        background: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    @media print {
+        nav, header, .hero-section, .lang-btn, .add-item-form {
+            display: none;
+        }
+        .billing-section {
+            box-shadow: none;
+            border: none;
+        }
+    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamata Enterpricess - Bill Book</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        padding: 20px;
+    }
+
+    .bill-container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .top-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        font-weight: bold;
+        gap: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 8px 12px;
+        border: none;
+        background: #10b981;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .delete-btn {
+        background: #ef4444;
+    }
+
+    .total-box {
+        margin-top: 15px;
+        text-align: right;
+        font-size: 16px;
+    }
+
+    .final {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    @media print {
+        button {
+            display: none;
+        }
+    }
+</style>
+</head>
+
+<body onload="setDateDay()">
+
+<div class="bill-container">
+
+<h1>Mamata Enterprises </h1>
+<p style="text-align:center; font-weight:bold; margin-top:5px;">
+    Near Basaveshwara circle Hunasagi-585215.
+📞 +91-9663728297, +91-9591904878
+</p>
+
+<div class="top-info">
+    <div>
+        Date:
+        <input type="date" id="dateInput" onchange="updateDay()">
+    </div>
+    <div>
+        Day:
+        <span id="day"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Name:</label>
+    <input type="text">
+</div>
+
+<div class="form-group">
+    <label>Mobile Number:</label>
+    <input type="text">
+</div>
+
+<table id="billTable">
+<thead>
+<tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Amount</th>
+    <th>Total</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><input type="text" class="item"></td>
+    <td><input type="number" class="qty" oninput="calculateTotal()"></td>
+    <td><input type="number" class="price" oninput="calculateTotal()"></td>
+    <td class="rowTotal">0</td>
+    <td><button class="delete-btn" onclick="deleteRow(this)">Cancel</button></td>
+</tr>
+</tbody>
+</table>
+
+<button onclick="addRow()">Add Item</button>
+
+<!-- GST & Discount -->
+<div class="form-group">
+    <label>GST (%):</label>
+    <input type="number" id="gst" value="0" oninput="calculateTotal()">
+</div>
+
+<div class="form-group">
+    <label>Discount (%):</label>
+    <input type="number" id="discount" value="0" oninput="calculateTotal()">
+</div>
+
+<div class="total-box">
+    Subtotal: ₹ <span id="subTotal">0</span><br>
+    GST Amount: ₹ <span id="gstAmount">0</span><br>
+    Discount Amount: ₹ <span id="discountAmount">0</span><br>
+
+    <div class="final">
+        Final Total: ₹ <span id="grandTotal">0</span>
+    </div>
+</div>
+
+<button onclick="window.print()">Print Bill</button>
+
+</div>
+
+<script>
+function setDateDay() {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("dateInput").value = today;
+    updateDay();
+}
+
+function updateDay() {
+    let dateValue = document.getElementById("dateInput").value;
+    if (dateValue) {
+        let day = new Date(dateValue).toLocaleDateString('en-US', { weekday: 'long' });
+        document.getElementById("day").innerText = day;
+    }
+}
+
+function addRow() {
+    let table = document.querySelector("#billTable tbody");
+    let row = table.insertRow();
+
+    row.innerHTML = `
+        <td><input type="text" class="item"></td>
+        <td><input type="number" class="qty" oninput="calculateTotal()"></td>
+        <td><input type="number" class="price" oninput="calculateTotal()"></td>
+        <td class="rowTotal">0</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">Cancel</button></td>
+    `;
+}
+
+function deleteRow(btn) {
+    btn.parentElement.parentElement.remove();
+    calculateTotal();
+}
+
+function calculateTotal() {
+    let rows = document.querySelectorAll("#billTable tbody tr");
+    let subTotal = 0;
+
+    rows.forEach(row => {
+        let qty = row.querySelector(".qty").value || 0;
+        let price = row.querySelector(".price").value || 0;
+        let total = qty * price;
+
+        row.querySelector(".rowTotal").innerText = total;
+        subTotal += total;
+    });
+
+    let gstPercent = document.getElementById("gst").value || 0;
+    let discountPercent = document.getElementById("discount").value || 0;
+
+    let gstAmount = subTotal * gstPercent / 100;
+    let discountAmount = subTotal * discountPercent / 100;
+
+    let finalTotal = subTotal + gstAmount - discountAmount;
+
+    document.getElementById("subTotal").innerText = subTotal;
+    document.getElementById("gstAmount").innerText = gstAmount.toFixed(2);
+    document.getElementById("discountAmount").innerText = discountAmount.toFixed(2);
+    document.getElementById("grandTotal").innerText = finalTotal.toFixed(2);
+}
+</script>
+
+</body>
+</html>

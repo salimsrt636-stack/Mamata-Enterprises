@@ -299,16 +299,6 @@
             </div>
         </a>
         
-        <!-- Email -->
-        <a href="mailto:salimsrt636@gmail.com" style="text-decoration: none; color: inherit; display: block;">
-            <div class="contact-card" style="cursor: pointer;">
-                <div class="contact-icon">✉️</div>
-                <h3>Email Us</h3>
-                <p>Send your queries via email</p>
-                <div class="phone-number" style="font-size: 1.1em;">salimsrt636@gmail.com</div>
-                <div class="call-btn" style="background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); margin-top: 20px;">📧 Send Email</div>
-            </div>
-        </a>
     </div>
 
     <div class="info-box">
@@ -324,7 +314,10 @@
 <div class="container">
     <div class="contact-section">
         <h2>📧 Send Us a Message</h2>
-        <form onsubmit="handleSubmit(event)">
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">
+            Fill out the form below or email us directly at: <a href="mailto:salimsrt636@gmail.com" style="color: #2a5298; font-weight: bold; text-decoration: none;">salimsrt636@gmail.com</a>
+        </p>
+        <form action="https://formspree.io/f/salimsrt636@gmail.com" method="POST" onsubmit="handleSubmit(event)">
             <div style="margin-bottom: 25px;">
                 <h3 style="color: #2a5298; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px;">👤 Customer Details</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
@@ -428,20 +421,35 @@
 
     function handleSubmit(event) {
         event.preventDefault();
+        const form = event.target;
+        const data = new FormData(form);
         const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const product = document.getElementById('product').value || 'General Inquiry';
-        
-        alert('Thank you for your inquiry, ' + name + '!\n\n' +
-              'Your message has been received and will be sent to salimsrt636@gmail.com.\n' +
-              'We will contact you soon at: ' + phone + ' or ' + email + '\n\n' +
-              'Or you can call us directly:\n' +
-              '📱 +91-9663728297\n' +
-              '☎️ +91-9591932635');
-        
-        // Reset form
-        document.querySelector('form').reset();
+
+        // Show a sending message
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = '⌛ Sending...';
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert('Thank you, ' + name + '!\n\nYour message has been successfully sent to salimsrt636@gmail.com.\nWe will contact you very soon.');
+                form.reset();
+            } else {
+                alert('Oops! There was a problem sending your message. Please try again or email us directly.');
+            }
+        }).catch(error => {
+            alert('Oops! There was a problem sending your message. Please try again or email us directly.');
+        }).finally(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
     }
 </script>
 

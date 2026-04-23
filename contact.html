@@ -298,6 +298,17 @@
                 <div class="call-btn" style="background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); margin-top: 20px;">🗺️ View on Map</div>
             </div>
         </a>
+        
+        <!-- Email -->
+        <a href="mailto:salimsrt636@gmail.com" style="text-decoration: none; color: inherit; display: block;">
+            <div class="contact-card" style="cursor: pointer;">
+                <div class="contact-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p>Send your queries via email</p>
+                <div class="phone-number" style="font-size: 1.1em;">salimsrt636@gmail.com</div>
+                <div class="call-btn" style="background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); margin-top: 20px;">📧 Send Email</div>
+            </div>
+        </a>
     </div>
 
     <div class="info-box">
@@ -314,21 +325,30 @@
     <div class="contact-section">
         <h2>📧 Send Us a Message</h2>
         <form onsubmit="handleSubmit(event)">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required>
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #2a5298; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px;">👤 Customer Details</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91-0000000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="product">Which Product Interested?</label>
-                <input type="text" id="product" name="product" placeholder="e.g., Samudra Aqua Max 10 HP">
+
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #2a5298; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px;">📝 Message Details</h3>
+                <div class="form-group">
+                    <label for="product">Which Product Interested?</label>
+                    <input type="text" id="product" name="product" placeholder="e.g., Samudra Aqua Max 10 HP">
+                </div>
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
@@ -410,10 +430,12 @@
         event.preventDefault();
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
         const product = document.getElementById('product').value || 'General Inquiry';
         
         alert('Thank you for your inquiry, ' + name + '!\n\n' +
-              'We will contact you soon at: ' + phone + '\n\n' +
+              'Your message has been received and will be sent to salimsrt636@gmail.com.\n' +
+              'We will contact you soon at: ' + phone + ' or ' + email + '\n\n' +
               'Or you can call us directly:\n' +
               '📱 +91-9663728297\n' +
               '☎️ +91-9591932635');

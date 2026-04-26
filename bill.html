@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Bill Book - Mamata Enterprises</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .nav-back {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: left;
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: #1e3c72;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bill-container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eef2f7;
+        }
+
+        .bill-header {
+            text-align: center;
+            border-bottom: 2px solid #1e3c72;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .bill-header h1 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .bill-header p {
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .tagline-box {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-style: italic;
+            color: #1e3c72;
+            font-weight: 700;
+        }
+
+        .top-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            background: #fcfdfe;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #f0f4f8;
+        }
+
+        .info-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-group label {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        input {
+            padding: 8px 12px;
+            border: 1px solid #dcdfe6;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #1e3c72;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ebeef5;
+            text-align: center;
+        }
+
+        td input {
+            width: 90%;
+            border: none;
+            background: transparent;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-add {
+            background: #10b981;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .btn-add:hover {
+            background: #059669;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.85em;
+        }
+
+        .btn-print {
+            background: #1e3c72;
+            color: white;
+            width: 100%;
+            margin-top: 30px;
+            font-size: 1.1em;
+            padding: 15px;
+        }
+
+        .total-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f9fafc;
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .total-row {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .grand-total {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #1e3c72;
+            border-top: 2px solid #eef2f7;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .bill-footer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .signature-box {
+            text-align: center;
+            width: 250px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding-top: 5px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .nav-back, .btn-add, .btn-delete, .btn-print, .input-area { display: none !important; }
+            .bill-container { box-shadow: none; border: none; width: 100%; padding: 0; }
+            input { border: none !important; }
+        }
+    </style>
+</head>
+
+<body onload="setDateDay()">
+
+    <div class="nav-back">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="bill-container">
+        <div class="bill-header">
+            <h1>MAMATA ENTERPRISES</h1>
+            <p>Authorised Dealers: Samudra Pumps & Motors</p>
+            <div class="contact-info">
+                Near Basaveshwara Circle, Hunasagi - 585215<br>
+                Dist: Yadgir, Karnataka<br>
+                📞 +91-9663728297, +91-9591932635
+            </div>
+        </div>
+
+        <div class="tagline-box">
+            "Samudra Pumps - Powering Your Growth"
+        </div>
+
+        <div class="top-info">
+            <div class="info-group">
+                <label>Date:</label>
+                <input type="date" id="dateInput" onchange="updateDay()">
+            </div>
+            <div class="info-group">
+                <label>Day:</label>
+                <span id="day" style="font-weight: 600; color: #1e3c72;"></span>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div style="display: flex; gap: 20px; margin-bottom: 15px;">
+                <div class="info-group" style="flex: 2;">
+                    <label>Customer Name:</label>
+                    <input type="text" id="customerName" placeholder="Enter Name" style="width: 100%;">
+                </div>
+                <div class="info-group" style="flex: 1;">
+                    <label>Phone:</label>
+                    <input type="text" id="customerPhone" placeholder="Enter Phone No." style="width: 100%;">
+                </div>
+            </div>
+        </div>
+
+        <table id="billTable">
+            <thead>
+                <tr>
+                    <th>Particulars</th>
+                    <th width="100">Qty</th>
+                    <th width="150">Price (₹)</th>
+                    <th width="150">Total (₹)</th>
+                    <th class="btn-delete">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="item" placeholder="Item Name"></td>
+                    <td><input type="number" class="qty" value="1" oninput="calculateTotal()"></td>
+                    <td><input type="number" class="price" value="0" oninput="calculateTotal()"></td>
+                    <td class="rowTotal">0</td>
+                    <td><button class="btn btn-delete" onclick="deleteRow(this)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-add" onclick="addRow()">+ Add New Item</button>
+
+        <div class="total-box">
+            <div class="total-row">Subtotal: ₹ <span id="subTotal">0</span></div>
+            <div class="info-group" style="justify-content: flex-end; margin-bottom: 8px;">
+                <label>GST (%):</label>
+                <input type="number" id="gst" value="0" oninput="calculateTotal()" style="width: 60px;">
+                <span> ₹ <span id="gstAmount">0</span></span>
+            </div>
+            <div class="info-group" style="justify-content: flex-end; margin-bottom: 8px;">
+                <label>Discount (%):</label>
+                <input type="number" id="discount" value="0" oninput="calculateTotal()" style="width: 60px;">
+                <span> ₹ <span id="discountAmount">0</span></span>
+            </div>
+            <div class="grand-total">
+                Final Total: ₹ <span id="grandTotal">0</span>
+            </div>
+        </div>
+
+        <div class="bill-footer">
+            <div class="signature-box">
+                <div class="signature-line">Customer Signature</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line">For MAMATA ENTERPRISES<br><small>(Seal & Signature)</small></div>
+            </div>
+        </div>
+
+        <button class="btn btn-print" onclick="window.print()">Download / Print Bill</button>
+    </div>
+
+    <script>
+        function setDateDay() {
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById("dateInput").value = today;
+            updateDay();
+        }
+
+        function updateDay() {
+            let dateValue = document.getElementById("dateInput").value;
+            if (dateValue) {
+                let day = new Date(dateValue).toLocaleDateString('en-US', { weekday: 'long' });
+                document.getElementById("day").innerText = day;
+            }
+        }
+
+        function addRow() {
+            let table = document.querySelector("#billTable tbody");
+            let row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" class="item" placeholder="Item Name"></td>
+                <td><input type="number" class="qty" value="1" oninput="calculateTotal()"></td>
+                <td><input type="number" class="price" value="0" oninput="calculateTotal()"></td>
+                <td class="rowTotal">0</td>
+                <td><button class="btn btn-delete" onclick="deleteRow(this)">Remove</button></td>
+            `;
+        }
+
+        function deleteRow(btn) {
+            btn.parentElement.parentElement.remove();
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let rows = document.querySelectorAll("#billTable tbody tr");
+            let subTotal = 0;
+
+            rows.forEach(row => {
+                let qty = parseFloat(row.querySelector(".qty").value) || 0;
+                let price = parseFloat(row.querySelector(".price").value) || 0;
+                let total = qty * price;
+                row.querySelector(".rowTotal").innerText = total.toFixed(2);
+                subTotal += total;
+            });
+
+            let gstPercent = parseFloat(document.getElementById("gst").value) || 0;
+            let discountPercent = parseFloat(document.getElementById("discount").value) || 0;
+
+            let gstAmount = subTotal * gstPercent / 100;
+            let discountAmount = subTotal * discountPercent / 100;
+            let finalTotal = subTotal + gstAmount - discountAmount;
+
+            document.getElementById("subTotal").innerText = subTotal.toFixed(2);
+            document.getElementById("gstAmount").innerText = gstAmount.toFixed(2);
+            document.getElementById("discountAmount").innerText = discountAmount.toFixed(2);
+            document.getElementById("grandTotal").innerText = finalTotal.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,43 +11,94 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=600&fit=crop') no-repeat center/cover fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('https://samudra.com/samudrapumps/Images/slide_new.webp') no-repeat center/cover fixed;
             color: #333;
             min-height: 100vh;
             padding-bottom: 150px;
         }
+
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            position: relative;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
+
+        .header-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
         header h1 {
-            font-size: 2.5em;
+            color: white !important;
+            font-size: 3.5em;
             margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+            font-weight: 800;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
         }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-            margin-top: 10px;
+            color: white !important;
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-top: 15px;
+            font-weight: 500;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
         }
+
         nav {
             background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
             padding: 15px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
         nav a {
             color: white;
             margin: 0 20px;
@@ -58,14 +110,17 @@
             border-radius: 5px;
             display: inline-block;
         }
+
         nav a:hover {
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         nav a:active {
-            background-color: rgba(255,255,255,0.3);
+            background-color: rgba(255, 255, 255, 0.3);
         }
+
         .container {
             padding: 40px 20px;
             max-width: 1000px;
@@ -74,45 +129,96 @@
             border-radius: 12px;
             margin-bottom: 20px;
         }
+
         .container h2 {
             color: #1e3c72;
             margin-bottom: 30px;
             font-size: 2em;
             text-align: center;
         }
+
         .product {
-            background: white;
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 5px solid #2a5298;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
         }
+
         .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(31, 38, 135, 0.25);
+            background: rgba(255, 255, 255, 0.9);
         }
+
         .product h3 {
             color: #1e3c72;
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: 1.6em;
+            margin: 15px 0 10px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
+
         .product img {
             width: 100%;
-            height: 220px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(42, 82, 152, 0.15);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
         }
+
+        .product:hover img {
+            transform: scale(1.05);
+        }
+
         .product p {
-            margin: 8px 0;
-            font-size: 1.05em;
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
         .product strong {
-            color: #2a5298;
+            color: #1e3c72;
+            min-width: 100px;
         }
+
+        .price-tag {
+            font-size: 1.3em !important;
+            color: #2a5298 !important;
+            font-weight: 800;
+            margin-top: 15px !important;
+        }
+
+        .details-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff !important;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        .product:hover .details-link {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+            transform: scale(1.05);
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -121,69 +227,114 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.3s ease;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .modal-content {
-            background: white;
-            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            margin: 5% auto;
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 30px;
             width: 90%;
-            max-width: 600px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: slideIn 0.3s ease;
+            max-width: 700px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
         }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+
+        @keyframes modalSlideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
         .close-btn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: #f0f2f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
+
         .close-btn:hover {
-            color: #1e3c72;
+            background: #e1e4e8;
+            color: #d32f2f;
+            transform: rotate(90deg);
         }
+
         .modal h2 {
             color: #1e3c72;
-            margin-bottom: 20px;
-            clear: both;
+            font-size: 2em;
+            margin-bottom: 25px;
+            font-weight: 800;
+            border-bottom: 3px solid #2a5298;
+            display: inline-block;
+            padding-bottom: 5px;
         }
+
         .modal-specs {
-            background: #f5f7fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+            background: rgba(42, 82, 152, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px 0;
         }
+
         .modal-specs h3 {
             color: #2a5298;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 700;
         }
+
         .spec-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(42, 82, 152, 0.1);
         }
+
         .spec-item:last-child {
             border-bottom: none;
         }
+
         .spec-label {
-            font-weight: 600;
+            font-weight: 700;
             color: #1e3c72;
         }
+
         .spec-value {
             color: #2a5298;
+            font-weight: 600;
         }
+
         .modal-btn {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -197,114 +348,143 @@
             transition: all 0.3s ease;
             width: 100%;
         }
+
         .modal-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
         }
+
         .categories-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .categories-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .categories-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
+
         .category-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
             padding: 35px;
-            border-radius: 12px;
-            border: 2px solid #e3e9f3;
+            border-radius: 20px;
+            border: 1px solid rgba(42, 82, 152, 0.1);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
+
         .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(42, 82, 152, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(42, 82, 152, 0.15);
             border-color: #2a5298;
+            background: white;
         }
+
         .category-icon {
             font-size: 4em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
         }
+
         .category-card h3 {
             color: #1e3c72;
             font-size: 1.6em;
             margin-bottom: 15px;
+            font-weight: 700;
         }
+
         .category-card p {
-            color: #666;
+            color: #555;
             font-size: 1em;
             line-height: 1.6;
             margin-bottom: 20px;
         }
+
         .category-features {
             text-align: left;
-            background: white;
+            background: rgba(240, 244, 255, 0.5);
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 20px;
         }
+
         .category-features li {
-            color: #555;
-            margin: 8px 0;
+            color: #444;
+            margin: 10px 0;
             font-size: 0.95em;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
         .category-features li:before {
-            content: "✓ ";
+            content: "✦";
             color: #2a5298;
             font-weight: bold;
-            margin-right: 8px;
         }
+
         .category-btn {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 10px 25px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 8px;
-            font-size: 0.95em;
+            border-radius: 50px;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.2);
         }
+
         .category-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+            box-shadow: 0 8px 20px rgba(42, 82, 152, 0.3);
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
         }
+
         .product {
             cursor: pointer;
         }
+
         .services-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .services-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
+
         .service-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 30px;
@@ -313,72 +493,85 @@
             text-align: center;
             transition: all 0.3s ease;
         }
+
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(42, 82, 152, 0.15);
             border-color: #2a5298;
         }
+
         .service-icon {
             font-size: 3em;
             margin-bottom: 15px;
         }
+
         .service-card h3 {
             color: #1e3c72;
             font-size: 1.4em;
             margin-bottom: 15px;
         }
+
         .service-card p {
             color: #666;
             font-size: 1em;
             line-height: 1.6;
             margin-bottom: 20px;
         }
+
         .service-card ul {
             text-align: left;
             margin: 20px 0;
             padding-left: 20px;
         }
+
         .service-card li {
             color: #555;
             margin: 8px 0;
             font-size: 0.95em;
         }
+
         .testimonials-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .testimonials-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .testimonials-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
+
         .testimonial-card {
             background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
             padding: 30px;
             border-radius: 10px;
             border-left: 5px solid #2a5298;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
+
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
         }
+
         .testimonial-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
+
         .testimonial-avatar {
             width: 50px;
             height: 50px;
@@ -392,50 +585,59 @@
             font-weight: bold;
             margin-right: 15px;
         }
+
         .testimonial-info h4 {
             color: #1e3c72;
             margin: 0;
             font-size: 1.1em;
         }
+
         .testimonial-info p {
             color: #666;
             margin: 3px 0 0 0;
             font-size: 0.9em;
         }
+
         .stars {
             color: #ff9800;
             font-size: 1.2em;
             margin-bottom: 10px;
         }
+
         .testimonial-text {
             color: #555;
             line-height: 1.6;
             font-style: italic;
             margin-bottom: 15px;
         }
+
         .faq-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .faq-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
+
         .faq-item {
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
         }
+
         .faq-question {
             background: #f8f9fa;
             padding: 20px;
@@ -445,154 +647,197 @@
             align-items: center;
             transition: background-color 0.3s ease;
         }
+
         .faq-question:hover {
             background: #e9ecef;
         }
+
         .faq-question h4 {
             color: #1e3c72;
             margin: 0;
             font-size: 1.1em;
             font-weight: 600;
         }
+
         .faq-toggle {
             color: #2a5298;
             font-size: 1.5em;
             font-weight: bold;
             transition: transform 0.3s ease;
         }
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
             background: white;
         }
+
         .faq-answer p {
             padding: 20px;
             margin: 0;
             color: #555;
             line-height: 1.6;
         }
+
         .faq-item.active .faq-toggle {
             transform: rotate(45deg);
         }
+
         .faq-item.active .faq-answer {
             max-height: 200px;
         }
+
         .comparison-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .comparison-section h2 {
             color: #1e3c72;
             margin-bottom: 20px;
             text-align: center;
             font-size: 2em;
         }
-        .comparison-section > p {
+
+        .comparison-section>p {
             text-align: center;
             color: #666;
             margin-bottom: 40px;
         }
+
         .comparison-table {
             overflow-x: auto;
         }
+
         .comparison-table table {
             width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(42, 82, 152, 0.1);
         }
+
         .comparison-table th {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table td {
             padding: 15px;
             text-align: center;
-            font-weight: 600;
+            border-bottom: 1px solid rgba(42, 82, 152, 0.05);
+            color: #444;
+            font-weight: 500;
         }
-        .comparison-table td {
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid #e0e0e0;
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
         }
+
         .comparison-table tr:nth-child(even) {
-            background: #f8f9fa;
+            background: rgba(42, 82, 152, 0.03);
         }
+
         .comparison-table tr:hover {
-            background: #e3f2fd;
+            background: rgba(42, 82, 152, 0.08);
+            transition: background 0.3s ease;
         }
+
         .specs-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .specs-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .specs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
+
         .spec-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 30px;
             border-radius: 12px;
             border-left: 5px solid #2a5298;
         }
+
         .spec-card h3 {
             color: #1e3c72;
             margin-bottom: 20px;
             font-size: 1.3em;
         }
+
         .spec-card ul {
             list-style: none;
             padding: 0;
         }
+
         .spec-card li {
             color: #555;
             margin: 10px 0;
             padding: 8px 0;
             border-bottom: 1px solid #e0e0e0;
         }
+
         .spec-card li:last-child {
             border-bottom: none;
         }
+
         .spec-card strong {
             color: #2a5298;
         }
+
         .guide-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .guide-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .guide-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
+
         .step {
             display: flex;
             align-items: flex-start;
             gap: 20px;
         }
+
         .step-number {
             width: 50px;
             height: 50px;
@@ -606,38 +851,45 @@
             font-weight: bold;
             flex-shrink: 0;
         }
+
         .step-content h4 {
             color: #1e3c72;
             margin-bottom: 10px;
             font-size: 1.2em;
         }
+
         .step-content p {
             color: #666;
             line-height: 1.6;
         }
+
         .subsidies-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .subsidies-section h2 {
             color: #1e3c72;
             margin-bottom: 20px;
             text-align: center;
             font-size: 2em;
         }
-        .subsidies-section > p {
+
+        .subsidies-section>p {
             text-align: center;
             color: #666;
             margin-bottom: 40px;
         }
+
         .subsidies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
+
         .subsidy-card {
             background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
             padding: 30px;
@@ -645,15 +897,18 @@
             border: 2px solid #e3f2fd;
             text-align: center;
         }
+
         .subsidy-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(42, 82, 152, 0.15);
         }
+
         .subsidy-card h3 {
             color: #1e3c72;
             margin-bottom: 15px;
             font-size: 1.4em;
         }
+
         .subsidy-amount {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -663,22 +918,26 @@
             font-weight: bold;
             margin-bottom: 15px;
         }
+
         .subsidy-card p {
             color: #666;
             margin-bottom: 20px;
             font-weight: 500;
         }
+
         .subsidy-card ul {
             text-align: left;
             list-style: none;
             padding: 0;
         }
+
         .subsidy-card li {
             color: #555;
             margin: 8px 0;
             padding-left: 20px;
             position: relative;
         }
+
         .subsidy-card li:before {
             content: "✓";
             color: #2a5298;
@@ -686,19 +945,22 @@
             position: absolute;
             left: 0;
         }
+
         .case-studies-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .case-studies-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .case-study {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 30px;
@@ -706,9 +968,11 @@
             margin-bottom: 30px;
             border-left: 5px solid #2a5298;
         }
+
         .case-study:last-child {
             margin-bottom: 0;
         }
+
         .case-header {
             display: flex;
             justify-content: space-between;
@@ -717,16 +981,19 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .case-header h3 {
             color: #1e3c72;
             margin: 0;
             font-size: 1.3em;
         }
+
         .case-stats {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
+
         .case-stats span {
             background: #2a5298;
             color: white;
@@ -735,57 +1002,68 @@
             font-size: 0.9em;
             font-weight: 500;
         }
+
         .case-study p {
             color: #555;
             line-height: 1.7;
             font-style: italic;
             margin: 0;
         }
+
         .warranty-section {
             background: white;
             padding: 50px 40px;
             margin: 40px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
+
         .warranty-section h2 {
             color: #1e3c72;
             margin-bottom: 40px;
             text-align: center;
             font-size: 2em;
         }
+
         .warranty-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
+
         .warranty-card {
             background: linear-gradient(135deg, #fff8e1 0%, #fff3c4 100%);
             padding: 30px;
             border-radius: 12px;
             border: 2px solid #ffe082;
         }
+
         .warranty-card h3 {
             color: #1e3c72;
             margin-bottom: 20px;
             font-size: 1.3em;
         }
+
         .warranty-card ul {
             list-style: none;
             padding: 0;
         }
+
         .warranty-card li {
             color: #555;
             margin: 10px 0;
             padding: 8px 0;
             border-bottom: 1px solid #ffe082;
         }
+
         .warranty-card li:last-child {
             border-bottom: none;
         }
+
         .warranty-card strong {
             color: #2a5298;
         }
+
         footer {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -794,15 +1072,17 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .language-selector {
             position: absolute;
             right: 20px;
             top: 15px;
         }
+
         .lang-btn {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid white;
             padding: 8px 12px;
@@ -812,1075 +1092,1173 @@
             margin: 0 5px;
             transition: all 0.3s ease;
         }
+
         .lang-btn.active {
-            background: rgba(255,255,255,0.4);
-            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
+
         .lang-btn:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .header-logo {
+            width: 180px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header-location {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .header-slogan {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #ffeb3b !important;
+        }
+
+        header h1 {
+            color: white !important;
+            font-size: 3.2em;
+            margin: 0;
+            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .motor-types-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 30px;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 1400px;
+        }
+
+        .motor-type-card {
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 12px;
+            min-width: 180px;
+            border: 1px solid #333;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            flex: 1 1 auto;
+            max-width: 250px;
+        }
+
+        .motor-type-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: #252525;
+            border-color: #2a5298;
+            box-shadow: 0 8px 25px rgba(42, 82, 152, 0.3);
+        }
+
+        .motor-type-card img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            margin-right: 12px;
+            background: white;
+            border-radius: 8px;
+            padding: 2px;
+            flex-shrink: 0;
+        }
+
+        .motor-type-card span {
+            font-size: 1em;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Category Details Modal */
+        .category-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+        }
+
+        .category-modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalSlide 0.4s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .category-modal-header {
+            border-bottom: 2px solid #1e3c72;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        .category-modal-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .type-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .type-item {
+            background: #f4f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s;
+        }
+
+        .type-item:hover {
+            background: #eef2f7;
+            transform: translateX(5px);
+        }
+
+        .type-item h4 {
+            margin: 0 0 5px 0;
+            color: #1e3c72;
+        }
+
+        .type-item p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .type-price {
+            display: inline-block;
+            margin-top: 10px;
+            background: #1e3c72;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .close-category-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-category-btn:hover {
+            color: #1e3c72;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1 data-en="Mamata Enterprises" data-kn="ಮಮತ ಎಂಟರ್‌ಪ್ರೈಸೆಸ್">Mamata Enterprises</h1>
-    <h1 data-en="Our Premium Water Pumps" data-kn="ನಮ್ಮ ಪ್ರಿಮಿಯಮ ಜಲ ಪಂಪ್‌ಗಳು">Our Premium Water Pumps</h1>
-    <p data-en="Quality Products for Your Agricultural Needs" data-kn="ನಿಮ್ಮ ಕೃಷಿ ಅವಶ್ಯಕತೆಗಳಿಗೆ ಗುಣಮಾನದ ಉತ್ಪನ್ನಗಳು">Quality Products for Your Agricultural Needs</p>
-</header>
-
-<nav>
-    <div class="language-selector">
-        <button class="lang-btn active" onclick="setLanguage('en')">English</button>
-        <button class="lang-btn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
-    </div>
-    <a href="index.html" data-en="🏠 Home" data-kn="🏠 ಹೋಮ್">🏠 Home</a>
-    <a href="products.html" data-en="📦 Products" data-kn="📦 ಉತ್ಪನ್ನಗಳು">📦 Products</a>
-    <a href="contact.html" data-en="📞 Call Us" data-kn="📞 ನಮ್ಮನ್ನು ಕರೆ">📞 Call Us</a>
-</nav>
-
-<div class="container" id="products">
-    <h2>Our Premium Water Pumps</h2>
-
-    <div class="product" onclick="showModal('underwater')">
-        <img src="https://images.unsplash.com/photo-1581093588401-01c079ace3ec?auto=format&fit=crop&w=900&q=80" alt="Samudra Aqua Max motor pump" />
-        <h3>💧 SAMUDRA AQUA MAX</h3>
-        <p><strong>Capacity:</strong> 10 HP</p>
-        <p><strong>Price:</strong> ₹38,000/-</p>
-        <p style="color: #2a5298; margin-top: 10px; cursor: pointer;">👉 Click to view details</p>
-    </div>
-
-    <div class="product" onclick="showModal('upperwater')">
-        <img src="https://images.unsplash.com/photo-1514826786317-59744efe0c14?auto=format&fit=crop&w=900&q=80" alt="Samudra Hydro Rise pump motor" />
-        <h3>💧 SAMUDRA HYDRO RISE</h3>
-        <p><strong>Capacity:</strong> 7.5 HP</p>
-        <p><strong>Price:</strong> ₹30,000/-</p>
-        <p style="color: #2a5298; margin-top: 10px; cursor: pointer;">👉 Click to view details</p>
-    </div>
-
-    <div class="product" onclick="showModal('solar')">
-        <img src="https://images.unsplash.com/photo-1494172961521-33799ddd43a5?auto=format&fit=crop&w=900&q=80" alt="Solar pump motor" />
-        <h3>☀️ SOLAR WATER PUMPS</h3>
-        <p><strong>Capacities:</strong> 5 HP, 7.5 HP, 10 HP</p>
-        <p><strong>Price:</strong> ₹300 per unit</p>
-        <p style="color: #2a5298; margin-top: 10px; cursor: pointer;">👉 Click to view details</p>
-    </div>
-
-    <div class="product" onclick="showModal('borewell')">
-        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=900&q=80" alt="Borewell pump motor" />
-        <h3>🕳️ BOREWELL PUMPS</h3>
-        <p><strong>Capacities:</strong> 3 HP, 5 HP, 7.5 HP, 10 HP</p>
-        <p><strong>Price:</strong> ₹25,000 - ₹45,000/-</p>
-        <p style="color: #2a5298; margin-top: 10px; cursor: pointer;">👉 Click to view details</p>
-    </div>
-
-    <div class="product" onclick="showModal('centrifugal')">
-        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=900&q=80" alt="Centrifugal pump motor" />
-        <h3>⚡ CENTRIFUGAL PUMPS</h3>
-        <p><strong>Capacities:</strong> 2 HP, 3 HP, 5 HP</p>
-        <p><strong>Price:</strong> ₹15,000 - ₹28,000/-</p>
-        <p style="color: #2a5298; margin-top: 10px; cursor: pointer;">👉 Click to view details</p>
-    </div>
-
-</div>
-
-<!-- Modal for SAMUDRA AQUA MAX -->
-<div id="underwaterModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('underwater')">&times;</span>
-        <h2>💧 SAMUDRA AQUA MAX - 10 HP</h2>
-        <p>Professional-grade submersible pump designed for agricultural and industrial applications.</p>
-        
-        <div class="modal-specs">
-            <h3>Specifications</h3>
-            <div class="spec-item">
-                <span class="spec-label">Power Rating:</span>
-                <span class="spec-value">10 HP</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Submersible Pump</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Maximum Depth:</span>
-                <span class="spec-value">50-70 meters</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Discharge Capacity:</span>
-                <span class="spec-value">40-50 liters/minute</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Voltage:</span>
-                <span class="spec-value">3 Phase - 440V</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Warranty:</span>
-                <span class="spec-value">2 Years</span>
-            </div>
+    <header>
+        <video autoplay muted loop playsinline class="header-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-water-flowing-through-a-pipe-4318-large.mp4"
+                type="video/mp4">
+        </video>
+        <div class="header-content">
+            <img src="https://samudrapumps.com/wp-content/uploads/2024/05/Logo-Copy-1-1024x419.png" alt="Samudra Pumps Logo" class="header-logo">
+            <h2 data-en="Samudra Pumps Hunasagi" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಸ್ ಹುಣಸಗಿ">Samudra Pumps Hunasagi</h2>
+            <p class="header-location" data-en="Taluk: Hunasagi | District: Yadagir" data-kn="ತಾಲ್ಲೂಕು: ಹುಣಸಗಿ  | ಜಿಲ್ಲೆ: ಯಾದಗಿರಿ">Taluk: Hunasagi | District: Yadagir</p>
+            <p class="header-slogan" data-en="Samudra Pumps - Powering Your Growth" data-kn="ಸಮುದ್ರ ಪಂಪ್‌ಗಳು - ನಿಮ್ಮ ಬೆಳವಣಿಗೆಗೆ ಶಕ್ತಿ">Samudra Pumps - Powering Your Growth</p>
+            <h1 data-en="Mamata Enterprises" data-kn="ಮಮತ ಎಂಟರ್‌ಪ್ರೈಸೆಸ್">Mamata Enterprises</h1>
         </div>
+    </header>
 
-        <div class="modal-specs">
-            <h3>Features</h3>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>High-quality copper windings</li>
-                <li>Durable stainless steel body</li>
-                <li>Energy efficient motor</li>
-                <li>Corrosion resistant design</li>
-                <li>Low maintenance required</li>
-            </ul>
+    <nav>
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+            <button class="lang-btn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
         </div>
+        <a href="index.html" data-en="🏠 Home" data-kn="🏠 ಹೋಮ್">🏠 Home</a>
+        <a href="products.html" data-en="📦 Products" data-kn="📦 ಉತ್ಪನ್ನಗಳು">📦 Products</a>
+        <a href="contact.html" data-en="📞 Call Us" data-kn="📞 ನಮ್ಮನ್ನು ಕರೆ">📞 Call Us</a>
+        <a href="bill.html" data-en="🧾 Bill Book" data-kn="🧾 ಬಿಲ್ ಬುಕ್">🧾 Bill Book</a>
+    </nav>
 
-        <p><strong>Price:</strong> ₹38,000/-</p>
-        <button class="modal-btn" onclick="inquireNow('SAMUDRA AQUA MAX - 10 HP')">Get Quote Now</button>
+    <h2
+        style="text-align: center; color: white; margin-top: 40px; font-size: 2em; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Browse by Motor Type</h2>
+    <div class="motor-types-container">
+        <div class="motor-type-card" id="type-home-pumps" onclick="showCategoryDetails('home')">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2025/10/553930288/PD/GP/FE/235002904/0-5-hp-samudra-single-phase-mini-monobloc-pumpset-500x500.jpg" alt="0.5 hp motor">
+            <span> Home Pumps</span>
+        </div>
+        <div class="motor-type-card" id="type-water-pumps" onclick="showCategoryDetails('water')">
+            <img src="https://samudrapumps.com/wp-content/uploads/2024/05/Banner-6.webp" alt="Water pump">
+            <span>Water pumps</span>
+        </div>
+        <div class="motor-type-card" id="type-slow-speed" onclick="showCategoryDetails('slow')">
+            <img src="https://samudrapumps.com/wp-content/uploads/2024/05/banner-1.webp" alt="Slow speed motor">
+            <span>Slow speed</span>
+        </div>
+        <div class="motor-type-card" id="type-monoblock" onclick="showCategoryDetails('monoblock')">
+            <img src="https://samudrapumps.com/wp-content/uploads/2024/05/Banner-4-1.png" alt="Monoblock pump">
+            <span>Monoblock pumps</span>
+        </div>
+        <div class="motor-type-card" id="type-self-priming" onclick="showCategoryDetails('self-priming')">
+            <img src="https://tiimg.tistatic.com/fp/2/007/781/single-phase-slow-speed-samudra-self-priming-monoblack-water-pump-motor-892.jpg" alt="Self priming pump">
+            <span>Self priming</span>
+        </div>
+        <div class="motor-type-card" id="type-samudra-hp" onclick="showCategoryDetails('hp-series')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-e-Cn9tknRGikaj_Zt7VevDIs97oqrYi47A&s" alt="7.5 hp motor">
+            <span>Samudra 2 To 15Hp </span>
+        </div>
+        <div class="motor-type-card" id="type-borewell" onclick="showCategoryDetails('borewell')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfchi8F3m7WVRgBXWu1vfS2RwolDwC1t8NqQ&s" alt="Borewell submersible">
+            <span>Borewell submersible</span>
+        </div>
+        <div class="motor-type-card" id="type-vertical" onclick="showCategoryDetails('vertical')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeB3CRw1_uFNIsRSWJqR70NxItsmDvSoNRKA&s" alt="Vertical pump">
+            <span>Vertical pump</span>
+        </div>
+        <div class="motor-type-card" id="type-samudra-monoblock" onclick="showCategoryDetails('samudra-monoblock')">
+            <img src="https://samudrapumps.com/wp-content/uploads/2024/05/WhatsApp-Image-2024-06-05-at-10.48.19-AM.webp" alt="Samudra Monoblock">
+            <span>Samudra Monoblock</span>
+        </div>
+        <div class="motor-type-card" id="type-pipes" onclick="showCategoryDetails('pipes')">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2025/11/557066220/WO/OH/BH/1058971/pvc-hose-pipes-500x500.jpeg" alt="Samudra Pipes">
+            <span>Samudra Pipes</span>
+        </div>
+        <div class="motor-type-card" id="type-dealers" onclick="showCategoryDetails('dealers')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREp8Wj2q8V9v8f4v4f4v4f4v4f4v4f4v4f4&s" alt="Pump dealers">
+            <span>Pump dealers</span>
+        </div>
     </div>
-</div>
 
-<!-- Modal for SAMUDRA HYDRO RISE -->
-<div id="upperwaterModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('upperwater')">&times;</span>
-        <h2>💧 SAMUDRA HYDRO RISE - 7.5 HP</h2>
-        <p>Surface pump ideal for irrigation and water supply applications.</p>
-        
-        <div class="modal-specs">
-            <h3>Specifications</h3>
-            <div class="spec-item">
-                <span class="spec-label">Power Rating:</span>
-                <span class="spec-value">7.5 HP</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Surface Pump</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Maximum Head:</span>
-                <span class="spec-value">40-45 meters</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Discharge Capacity:</span>
-                <span class="spec-value">35-45 liters/minute</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Voltage:</span>
-                <span class="spec-value">3 Phase - 440V</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Warranty:</span>
-                <span class="spec-value">2 Years</span>
-            </div>
-        </div>
 
-        <div class="modal-specs">
-            <h3>Features</h3>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>Easy installation and maintenance</li>
-                <li>Reliable performance</li>
-                <li>Compact design</li>
-                <li>Suitable for open well or tank</li>
-                <li>Cost-effective solution</li>
-            </ul>
-        </div>
 
-        <p><strong>Price:</strong> ₹30,000/-</p>
-        <button class="modal-btn" onclick="inquireNow('SAMUDRA HYDRO RISE - 7.5 HP')">Get Quote Now</button>
-    </div>
-</div>
+    <div class="container">
+        <div class="categories-section">
+            <h2>🏷️ Product Categories</h2>
 
-<!-- Modal for SOLAR PUMPS -->
-<div id="solarModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('solar')">&times;</span>
-        <h2>☀️ SOLAR WATER PUMPS</h2>
-        <p>Eco-friendly solar-powered pumps for sustainable water management.</p>
-        
-        <div class="modal-specs">
-            <h3>Available Specifications</h3>
-            <div class="spec-item">
-                <span class="spec-label">Power Options:</span>
-                <span class="spec-value">5 HP, 7.5 HP, 10 HP</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Solar Submersible</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Solar Panel Power:</span>
-                <span class="spec-value">2 kW - 3.5 kW</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Daily Output:</span>
-                <span class="spec-value">100+ liters/minute</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Warranty:</span>
-                <span class="spec-value">3 Years on Pump + 5 Years on Panel</span>
-            </div>
-        </div>
-
-        <div class="modal-specs">
-            <h3>Benefits</h3>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>Zero electricity cost</li>
-                <li>Eco-friendly & sustainable</li>
-                <li>No grid dependency</li>
-                <li>Minimal maintenance</li>
-                <li>Long lifespan (20+ years)</li>
-                <li>Government subsidies available</li>
-            </ul>
-        </div>
-
-        <p><strong>Price:</strong> Starting from ₹2,50,000/-</p>
-        <button class="modal-btn" onclick="inquireNow('SOLAR WATER PUMPS')">Get Quote Now</button>
-    </div>
-</div>
-
-<!-- Modal for BOREWELL PUMPS -->
-<div id="borewellModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('borewell')">&times;</span>
-        <h2>🕳️ BOREWELL PUMPS</h2>
-        <p>High-performance borewell pumps designed for deep water extraction.</p>
-        
-        <div class="modal-specs">
-            <h3>Available Specifications</h3>
-            <div class="spec-item">
-                <span class="spec-label">Power Options:</span>
-                <span class="spec-value">3 HP, 5 HP, 7.5 HP, 10 HP</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Borewell Submersible</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Maximum Depth:</span>
-                <span class="spec-value">100-200 meters</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Discharge Capacity:</span>
-                <span class="spec-value">30-80 liters/minute</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Voltage:</span>
-                <span class="spec-value">Single Phase - 220V / Three Phase - 440V</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Warranty:</span>
-                <span class="spec-value">2 Years</span>
-            </div>
-        </div>
-
-        <div class="modal-specs">
-            <h3>Features</h3>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>Deep water extraction capability</li>
-                <li>Corrosion resistant materials</li>
-                <li>High efficiency motors</li>
-                <li>Suitable for borewell diameters 4"-6"</li>
-                <li>Built-in thermal protection</li>
-                <li>Easy installation and maintenance</li>
-            </ul>
-        </div>
-
-        <p><strong>Price:</strong> ₹25,000 - ₹45,000/-</p>
-        <button class="modal-btn" onclick="inquireNow('BOREWELL PUMPS')">Get Quote Now</button>
-    </div>
-</div>
-
-<!-- Modal for CENTRIFUGAL PUMPS -->
-<div id="centrifugalModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('centrifugal')">&times;</span>
-        <h2>⚡ CENTRIFUGAL PUMPS</h2>
-        <p>Versatile centrifugal pumps ideal for irrigation and water transfer applications.</p>
-        
-        <div class="modal-specs">
-            <h3>Available Specifications</h3>
-            <div class="spec-item">
-                <span class="spec-label">Power Options:</span>
-                <span class="spec-value">2 HP, 3 HP, 5 HP</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Type:</span>
-                <span class="spec-value">Centrifugal Pump</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Maximum Head:</span>
-                <span class="spec-value">20-40 meters</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Discharge Capacity:</span>
-                <span class="spec-value">50-150 liters/minute</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Voltage:</span>
-                <span class="spec-value">Single Phase - 220V / Three Phase - 440V</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">Warranty:</span>
-                <span class="spec-value">1 Year</span>
-            </div>
-        </div>
-
-        <div class="modal-specs">
-            <h3>Features</h3>
-            <ul style="margin: 0; padding-left: 20px;">
-                <li>High flow rate capacity</li>
-                <li>Self-priming capability</li>
-                <li>Compact and lightweight design</li>
-                <li>Suitable for open wells and tanks</li>
-                <li>Low maintenance requirements</li>
-                <li>Cost-effective solution</li>
-            </ul>
-        </div>
-
-        <p><strong>Price:</strong> ₹15,000 - ₹28,000/-</p>
-        <button class="modal-btn" onclick="inquireNow('CENTRIFUGAL PUMPS')">Get Quote Now</button>
-    </div>
-</div>
-
-<div class="container">
-    <div class="categories-section">
-        <h2>🏷️ Product Categories</h2>
-        
-        <div class="categories-container">
-            <!-- Submersible Pumps Category -->
-            <div class="category-card" onclick="showModal('underwater')">
-                <div class="category-icon">💧</div>
-                <h3>Submersible Pumps</h3>
-                <p>Underground & deep well water extraction</p>
-                <div class="category-features">
-                    <ul>
-                        <li>Deep water extraction (50-70m)</li>
-                        <li>High discharge capacity</li>
-                        <li>Durable stainless steel</li>
-                        <li>Low maintenance</li>
-                        <li>Energy efficient</li>
-                    </ul>
+            <div class="categories-container">
+                <!-- Submersible Pumps Category -->
+                <div class="category-card">
+                    <div class="category-icon">💧</div>
+                    <h3>Submersible Pumps</h3>
+                    <p>Underground & deep well water extraction</p>
+                    <div class="category-features">
+                        <ul>
+                            <li>Deep water extraction (50-70m)</li>
+                            <li>High discharge capacity</li>
+                            <li>Durable stainless steel</li>
+                            <li>Low maintenance</li>
+                            <li>Energy efficient</li>
+                        </ul>
+                    </div>
+                    <p><strong>₹38,000 - ₹45,000</strong></p>
                 </div>
-                <p><strong>₹38,000 - ₹45,000</strong></p>
-                <button class="category-btn" onclick="event.stopPropagation(); showModal('underwater')">View Details</button>
-            </div>
 
-            <!-- Surface Pumps Category -->
-            <div class="category-card" onclick="showModal('upperwater')">
-                <div class="category-icon">🌊</div>
-                <h3>Surface Pumps</h3>
-                <p>Open well & tank water supply solutions</p>
-                <div class="category-features">
-                    <ul>
-                        <li>Easy installation</li>
-                        <li>40-45 meter head capacity</li>
-                        <li>Compact & portable design</li>
-                        <li>Suitable for open wells</li>
-                        <li>Cost-effective option</li>
-                    </ul>
+                <!-- Surface Pumps Category -->
+                <div class="category-card">
+                    <div class="category-icon">🌊</div>
+                    <h3>Surface Pumps</h3>
+                    <p>Open well & tank water supply solutions</p>
+                    <div class="category-features">
+                        <ul>
+                            <li>Easy installation</li>
+                            <li>40-45 meter head capacity</li>
+                            <li>Compact & portable design</li>
+                            <li>Suitable for open wells</li>
+                            <li>Cost-effective option</li>
+                        </ul>
+                    </div>
+                    <p><strong>₹28,000 - ₹35,000</strong></p>
                 </div>
-                <p><strong>₹28,000 - ₹35,000</strong></p>
-                <button class="category-btn" onclick="event.stopPropagation(); showModal('upperwater')">View Details</button>
-            </div>
 
-            <!-- Solar Pumps Category -->
-            <div class="category-card" onclick="showModal('solar')">
-                <div class="category-icon">☀️</div>
-                <h3>Solar Water Pumps</h3>
-                <p>Eco-friendly & sustainable water management</p>
-                <div class="category-features">
-                    <ul>
-                        <li>Zero electricity cost</li>
-                        <li>Eco-friendly & green</li>
-                        <li>Government subsidies available</li>
-                        <li>20+ year lifespan</li>
-                        <li>Minimal maintenance</li>
-                    </ul>
+                <!-- Solar Pumps Category -->
+                <div class="category-card">
+                    <div class="category-icon">☀️</div>
+                    <h3>Solar Water Pumps</h3>
+                    <p>Eco-friendly & sustainable water management</p>
+                    <div class="category-features">
+                        <ul>
+                            <li>Zero electricity cost</li>
+                            <li>Eco-friendly & green</li>
+                            <li>Government subsidies available</li>
+                            <li>20+ year lifespan</li>
+                            <li>Minimal maintenance</li>
+                        </ul>
+                    </div>
+                    <p><strong>₹2,50,000 - ₹4,00,000</strong></p>
                 </div>
-                <p><strong>₹2,50,000 - ₹4,00,000</strong></p>
-                <button class="category-btn" onclick="event.stopPropagation(); showModal('solar')">View Details</button>
-            </div>
 
-            <!-- Borewell Pumps Category -->
-            <div class="category-card" onclick="showModal('borewell')">
-                <div class="category-icon">🕳️</div>
-                <h3>Borewell Pumps</h3>
-                <p>Deep water extraction for borewells</p>
-                <div class="category-features">
-                    <ul>
-                        <li>100-200 meter depth capacity</li>
-                        <li>Corrosion resistant</li>
-                        <li>High efficiency motors</li>
-                        <li>Suitable for 4"-6" borewells</li>
-                        <li>Built-in thermal protection</li>
-                    </ul>
+                <!-- Borewell Pumps Category -->
+                <div class="category-card">
+                    <div class="category-icon">🕳️</div>
+                    <h3>Borewell Pumps</h3>
+                    <p>Deep water extraction for borewells</p>
+                    <div class="category-features">
+                        <ul>
+                            <li>100-200 meter depth capacity</li>
+                            <li>Corrosion resistant</li>
+                            <li>High efficiency motors</li>
+                            <li>Suitable for 4"-6" borewells</li>
+                            <li>Built-in thermal protection</li>
+                        </ul>
+                    </div>
+                    <p><strong>₹25,000 - ₹45,000</strong></p>
                 </div>
-                <p><strong>₹25,000 - ₹45,000</strong></p>
-                <button class="category-btn" onclick="event.stopPropagation(); showModal('borewell')">View Details</button>
-            </div>
 
-            <!-- Centrifugal Pumps Category -->
-            <div class="category-card" onclick="showModal('centrifugal')">
-                <div class="category-icon">⚡</div>
-                <h3>Centrifugal Pumps</h3>
-                <p>High flow rate pumps for irrigation</p>
-                <div class="category-features">
-                    <ul>
-                        <li>Self-priming capability</li>
-                        <li>High discharge capacity</li>
-                        <li>Compact & lightweight</li>
-                        <li>Suitable for open wells</li>
-                        <li>Cost-effective solution</li>
-                    </ul>
+                <!-- Centrifugal Pumps Category -->
+                <div class="category-card">
+                    <div class="category-icon">⚡</div>
+                    <h3>Centrifugal Pumps</h3>
+                    <p>High flow rate pumps for irrigation</p>
+                    <div class="category-features">
+                        <ul>
+                            <li>Self-priming capability</li>
+                            <li>High discharge capacity</li>
+                            <li>Compact & lightweight</li>
+                            <li>Suitable for open wells</li>
+                            <li>Cost-effective solution</li>
+                        </ul>
+                    </div>
+                    <p><strong>₹15,000 - ₹28,000</strong></p>
                 </div>
-                <p><strong>₹15,000 - ₹28,000</strong></p>
-                <button class="category-btn" onclick="event.stopPropagation(); showModal('centrifugal')">View Details</button>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="services-section">
-        <h2>🛠️ Our Services</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>Installation Service</h3>
-                <p>Professional installation by certified technicians</p>
-                <ul>
-                    <li>Site assessment and planning</li>
-                    <li>Complete pump installation</li>
-                    <li>Electrical connections</li>
-                    <li>Testing and commissioning</li>
-                    <li>30-day post-installation support</li>
-                </ul>
-                <p><strong>Starting from ₹2,000/-</strong></p>
-            </div>
+    <div class="container">
+        <div class="services-section">
+            <h2>🛠️ Our Services</h2>
 
-            <div class="service-card">
-                <div class="service-icon">🔄</div>
-                <h3>Maintenance Packages</h3>
-                <p>Regular maintenance to ensure optimal performance</p>
-                <ul>
-                    <li>Annual maintenance check</li>
-                    <li>Parts replacement</li>
-                    <li>Performance optimization</li>
-                    <li>Emergency repair service</li>
-                    <li>24/7 technical support</li>
-                </ul>
-                <p><strong>₹1,500/year</strong></p>
-            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Installation Service</h3>
+                    <p>Professional installation by certified technicians</p>
+                    <ul>
+                        <li>Site assessment and planning</li>
+                        <li>Complete pump installation</li>
+                        <li>Electrical connections</li>
+                        <li>Testing and commissioning</li>
+                        <li>30-day post-installation support</li>
+                    </ul>
+                    <p><strong>Starting from ₹2,000/-</strong></p>
+                </div>
 
-            <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Technical Consultation</h3>
-                <p>Expert advice for your water management needs</p>
-                <ul>
-                    <li>Water requirement assessment</li>
-                    <li>Pump selection guidance</li>
-                    <li>Energy efficiency consultation</li>
-                    <li>Cost-benefit analysis</li>
-                    <li>Customized solutions</li>
-                </ul>
-                <p><strong>Free Consultation</strong></p>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Maintenance Packages</h3>
+                    <p>Regular maintenance to ensure optimal performance</p>
+                    <ul>
+                        <li>Annual maintenance check</li>
+                        <li>Parts replacement</li>
+                        <li>Performance optimization</li>
+                        <li>Emergency repair service</li>
+                        <li>24/7 technical support</li>
+                    </ul>
+                    <p><strong>₹1,500/year</strong></p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Technical Consultation</h3>
+                    <p>Expert advice for your water management needs</p>
+                    <ul>
+                        <li>Water requirement assessment</li>
+                        <li>Pump selection guidance</li>
+                        <li>Energy efficiency consultation</li>
+                        <li>Cost-benefit analysis</li>
+                        <li>Customized solutions</li>
+                    </ul>
+                    <p><strong>Free Consultation</strong></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="testimonials-section">
-        <h2>⭐ Customer Testimonials</h2>
-        
-        <div class="testimonials-container">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">👨‍🌾</div>
-                    <div class="testimonial-info">
-                        <h4>Rajesh Kumar</h4>
-                        <p>Farm Owner, Raichur</p>
+    <div class="container">
+        <div class="testimonials-section">
+            <h2>⭐ Customer Testimonials</h2>
+
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨‍🌾</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Farm Owner, Raichur</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "Excellent service! The Samudra pump has been working perfectly for my farm irrigation.
+                        Installation was quick and the team was very professional."
                     </div>
                 </div>
-                <div class="stars">★★★★★</div>
-                <div class="testimonial-text">
-                    "Excellent service! The Samudra pump has been working perfectly for my farm irrigation. 
-                    Installation was quick and the team was very professional."
-                </div>
-            </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">👩‍💼</div>
-                    <div class="testimonial-info">
-                        <h4>Meera Sharma</h4>
-                        <p>Business Owner, Kalaburagi</p>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👩‍💼</div>
+                        <div class="testimonial-info">
+                            <h4>Meera Sharma</h4>
+                            <p>Business Owner, Kalaburagi</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "Very satisfied with the solar pump installation. Zero electricity bills and the system
+                        is completely maintenance-free. Highly recommend Mamata Enterprises!"
                     </div>
                 </div>
-                <div class="stars">★★★★★</div>
-                <div class="testimonial-text">
-                    "Very satisfied with the solar pump installation. Zero electricity bills and the system 
-                    is completely maintenance-free. Highly recommend Mamata Enterprises!"
-                </div>
-            </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">👨‍🔧</div>
-                    <div class="testimonial-info">
-                        <h4>Suresh Patel</h4>
-                        <p>Contractor, Vijayapur</p>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨‍🔧</div>
+                        <div class="testimonial-info">
+                            <h4>Suresh Patel</h4>
+                            <p>Contractor, Vijayapur</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "Quality products and excellent after-sales service. The borewell pump I purchased
+                        has been running smoothly for over a year now."
                     </div>
                 </div>
-                <div class="stars">★★★★★</div>
-                <div class="testimonial-text">
-                    "Quality products and excellent after-sales service. The borewell pump I purchased 
-                    has been running smoothly for over a year now."
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="faq-section">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Which pump is best for my borewell?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The best pump depends on your borewell depth, water requirement, and power availability.
+                            For depths up to 70 meters, we recommend submersible pumps. For deeper borewells (100-200
+                            meters),
+                            borewell pumps are ideal. Our technical team can help you choose the right pump after
+                            assessing your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What is the warranty period for pumps?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most of our pumps come with a 1-2 year warranty on the motor and pump assembly.
+                            Solar pumps have a 3-year warranty on the pump and 5 years on solar panels.
+                            Warranty covers manufacturing defects and performance issues.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Do you provide installation services?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide complete installation services by certified technicians.
+                            Our installation package includes site assessment, pump installation, electrical
+                            connections,
+                            testing, and 30-day post-installation support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Are solar pumps worth the investment?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Solar pumps eliminate electricity costs, are eco-friendly, and have a long
+                            lifespan (20+ years).
+                            With government subsidies available, the return on investment is excellent. Plus, they
+                            provide
+                            reliable water supply even during power outages.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What maintenance is required for the pumps?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Regular maintenance includes annual servicing, checking electrical connections, and cleaning
+                            filters.
+                            We offer annual maintenance packages that include inspection, cleaning, and minor repairs.
+                            Most pumps require minimal maintenance when properly installed.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="faq-section">
-        <h2>❓ Frequently Asked Questions</h2>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h4>Which pump is best for my borewell?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The best pump depends on your borewell depth, water requirement, and power availability. 
-                    For depths up to 70 meters, we recommend submersible pumps. For deeper borewells (100-200 meters), 
-                    borewell pumps are ideal. Our technical team can help you choose the right pump after assessing your requirements.</p>
-                </div>
+    <div class="container">
+        <div class="comparison-section">
+            <h2>📊 Product Comparison</h2>
+            <p>Compare our pump types to find the perfect solution for your needs</p>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>💧 Submersible</th>
+                            <th>🕳️ Borewell</th>
+                            <th>⚡ Centrifugal</th>
+                            <th>☀️ Solar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Max Depth</td>
+                            <td>50-70m</td>
+                            <td>100-200m</td>
+                            <td>Surface</td>
+                            <td>50-100m</td>
+                        </tr>
+                        <tr>
+                            <td>Power Range</td>
+                            <td>5-10 HP</td>
+                            <td>3-10 HP</td>
+                            <td>2-5 HP</td>
+                            <td>5-10 HP</td>
+                        </tr>
+                        <tr>
+                            <td>Best For</td>
+                            <td>Open Wells</td>
+                            <td>Deep Borewells</td>
+                            <td>Irrigation</td>
+                            <td>Eco-Friendly</td>
+                        </tr>
+                        <tr>
+                            <td>Installation</td>
+                            <td>Medium</td>
+                            <td>Complex</td>
+                            <td>Easy</td>
+                            <td>Complex</td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance</td>
+                            <td>Low</td>
+                            <td>Medium</td>
+                            <td>Low</td>
+                            <td>Very Low</td>
+                        </tr>
+                        <tr>
+                            <td>Price Range</td>
+                            <td>₹30K-45K</td>
+                            <td>₹25K-45K</td>
+                            <td>₹15K-28K</td>
+                            <td>₹2.5L-4L</td>
+                        </tr>
+                        <tr>
+                            <td>Flow Rate</td>
+                            <td>50-200 LPM</td>
+                            <td>30-150 LPM</td>
+                            <td>100-500 LPM</td>
+                            <td>40-180 LPM</td>
+                        </tr>
+                        <tr>
+                            <td>Head Range</td>
+                            <td>20-60m</td>
+                            <td>50-150m</td>
+                            <td>10-40m</td>
+                            <td>20-80m</td>
+                        </tr>
+                        <tr>
+                            <td>Power Consumption</td>
+                            <td>3.5-7.5 kW</td>
+                            <td>2.2-7.5 kW</td>
+                            <td>1.5-3.7 kW</td>
+                            <td>0 kW (Solar)</td>
+                        </tr>
+                        <tr>
+                            <td>Operating Hours</td>
+                            <td>8-12 hrs/day</td>
+                            <td>6-10 hrs/day</td>
+                            <td>10-16 hrs/day</td>
+                            <td>24/7 (with battery)</td>
+                        </tr>
+                        <tr>
+                            <td>Water Quality</td>
+                            <td>Clean water</td>
+                            <td>Clean/slightly turbid</td>
+                            <td>Clean water</td>
+                            <td>Clean water</td>
+                        </tr>
+                        <tr>
+                            <td>Noise Level</td>
+                            <td>Low</td>
+                            <td>Medium</td>
+                            <td>Medium-High</td>
+                            <td>Very Low</td>
+                        </tr>
+                        <tr>
+                            <td>Initial Cost</td>
+                            <td>Medium</td>
+                            <td>High</td>
+                            <td>Low</td>
+                            <td>Very High</td>
+                        </tr>
+                        <tr>
+                            <td>Running Cost</td>
+                            <td>High</td>
+                            <td>High</td>
+                            <td>High</td>
+                            <td>Zero</td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Impact</td>
+                            <td>Medium</td>
+                            <td>Medium</td>
+                            <td>Medium</td>
+                            <td>Zero</td>
+                        </tr>
+                        <tr>
+                            <td>Suitable For</td>
+                            <td>Domestic/Commercial</td>
+                            <td>Agriculture/Industrial</td>
+                            <td>Irrigation/Transfer</td>
+                            <td>Remote areas</td>
+                        </tr>
             </div>
+        </div>
+    </div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h4>What is the warranty period for pumps?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Most of our pumps come with a 1-2 year warranty on the motor and pump assembly. 
-                    Solar pumps have a 3-year warranty on the pump and 5 years on solar panels. 
-                    Warranty covers manufacturing defects and performance issues.</p>
-                </div>
-            </div>
+    <div class="container">
+        <div class="specs-section">
+            <h2>🔧 Technical Specifications</h2>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h4>Do you provide installation services?</h4>
-                    <span class="faq-toggle">+</span>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>⚡ Electrical Specifications</h3>
+                    <ul>
+                        <li><strong>Voltage:</strong> 220V Single Phase / 440V Three Phase</li>
+                        <li><strong>Frequency:</strong> 50 Hz</li>
+                        <li><strong>Insulation Class:</strong> B/F Class</li>
+                        <li><strong>Protection:</strong> IP68 for Submersible Pumps</li>
+                        <li><strong>Efficiency:</strong> 70-85% depending on model</li>
+                    </ul>
                 </div>
-                <div class="faq-answer">
-                    <p>Yes, we provide complete installation services by certified technicians. 
-                    Our installation package includes site assessment, pump installation, electrical connections, 
-                    testing, and 30-day post-installation support.</p>
-                </div>
-            </div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h4>Are solar pumps worth the investment?</h4>
-                    <span class="faq-toggle">+</span>
+                <div class="spec-card">
+                    <h3>🌊 Hydraulic Specifications</h3>
+                    <ul>
+                        <li><strong>Head Range:</strong> 10-200 meters</li>
+                        <li><strong>Flow Rate:</strong> 30-150 liters/minute</li>
+                        <li><strong>Operating Temperature:</strong> 5°C to 50°C</li>
+                        <li><strong>pH Range:</strong> 6.5 to 8.5</li>
+                        <li><strong>Solid Handling:</strong> Up to 50mm particles</li>
+                    </ul>
                 </div>
-                <div class="faq-answer">
-                    <p>Absolutely! Solar pumps eliminate electricity costs, are eco-friendly, and have a long lifespan (20+ years). 
-                    With government subsidies available, the return on investment is excellent. Plus, they provide 
-                    reliable water supply even during power outages.</p>
-                </div>
-            </div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h4>What maintenance is required for the pumps?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Regular maintenance includes annual servicing, checking electrical connections, and cleaning filters. 
-                    We offer annual maintenance packages that include inspection, cleaning, and minor repairs. 
-                    Most pumps require minimal maintenance when properly installed.</p>
+                <div class="spec-card">
+                    <h3>🏗️ Construction Materials</h3>
+                    <ul>
+                        <li><strong>Casing:</strong> Cast Iron / Stainless Steel</li>
+                        <li><strong>Impeller:</strong> Brass / Stainless Steel</li>
+                        <li><strong>Shaft:</strong> Stainless Steel 304/316</li>
+                        <li><strong>Bearings:</strong> High-quality ball bearings</li>
+                        <li><strong>Seals:</strong> Mechanical seals with backup</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="comparison-section">
-        <h2>📊 Product Comparison</h2>
-        <p>Compare our pump types to find the perfect solution for your needs</p>
-        
-        <div class="comparison-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>💧 Submersible</th>
-                        <th>🕳️ Borewell</th>
-                        <th>⚡ Centrifugal</th>
-                        <th>☀️ Solar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Max Depth</td>
-                        <td>50-70m</td>
-                        <td>100-200m</td>
-                        <td>Surface</td>
-                        <td>50-100m</td>
-                    </tr>
-                    <tr>
-                        <td>Power Range</td>
-                        <td>5-10 HP</td>
-                        <td>3-10 HP</td>
-                        <td>2-5 HP</td>
-                        <td>5-10 HP</td>
-                    </tr>
-                    <tr>
-                        <td>Best For</td>
-                        <td>Open Wells</td>
-                        <td>Deep Borewells</td>
-                        <td>Irrigation</td>
-                        <td>Eco-Friendly</td>
-                    </tr>
-                    <tr>
-                        <td>Installation</td>
-                        <td>Medium</td>
-                        <td>Complex</td>
-                        <td>Easy</td>
-                        <td>Complex</td>
-                    </tr>
-                    <tr>
-                        <td>Maintenance</td>
-                        <td>Low</td>
-                        <td>Medium</td>
-                        <td>Low</td>
-                        <td>Very Low</td>
-                    </tr>
-                    <tr>
-                        <td>Price Range</td>
-                        <td>₹30K-45K</td>
-                        <td>₹25K-45K</td>
-                        <td>₹15K-28K</td>
-                        <td>₹2.5L-4L</td>
-                    </tr>
-                    <tr>
-                        <td>Flow Rate</td>
-                        <td>50-200 LPM</td>
-                        <td>30-150 LPM</td>
-                        <td>100-500 LPM</td>
-                        <td>40-180 LPM</td>
-                    </tr>
-                    <tr>
-                        <td>Head Range</td>
-                        <td>20-60m</td>
-                        <td>50-150m</td>
-                        <td>10-40m</td>
-                        <td>20-80m</td>
-                    </tr>
-                    <tr>
-                        <td>Power Consumption</td>
-                        <td>3.5-7.5 kW</td>
-                        <td>2.2-7.5 kW</td>
-                        <td>1.5-3.7 kW</td>
-                        <td>0 kW (Solar)</td>
-                    </tr>
-                    <tr>
-                        <td>Operating Hours</td>
-                        <td>8-12 hrs/day</td>
-                        <td>6-10 hrs/day</td>
-                        <td>10-16 hrs/day</td>
-                        <td>24/7 (with battery)</td>
-                    </tr>
-                    <tr>
-                        <td>Water Quality</td>
-                        <td>Clean water</td>
-                        <td>Clean/slightly turbid</td>
-                        <td>Clean water</td>
-                        <td>Clean water</td>
-                    </tr>
-                    <tr>
-                        <td>Noise Level</td>
-                        <td>Low</td>
-                        <td>Medium</td>
-                        <td>Medium-High</td>
-                        <td>Very Low</td>
-                    </tr>
-                    <tr>
-                        <td>Initial Cost</td>
-                        <td>Medium</td>
-                        <td>High</td>
-                        <td>Low</td>
-                        <td>Very High</td>
-                    </tr>
-                    <tr>
-                        <td>Running Cost</td>
-                        <td>High</td>
-                        <td>High</td>
-                        <td>High</td>
-                        <td>Zero</td>
-                    </tr>
-                    <tr>
-                        <td>Environmental Impact</td>
-                        <td>Medium</td>
-                        <td>Medium</td>
-                        <td>Medium</td>
-                        <td>Zero</td>
-                    </tr>
-                    <tr>
-                        <td>Suitable For</td>
-                        <td>Domestic/Commercial</td>
-                        <td>Agriculture/Industrial</td>
-                        <td>Irrigation/Transfer</td>
-                        <td>Remote areas</td>
-                    </tr>
-        </div>
-    </div>
-</div>
+    <div class="container">
+        <div class="guide-section">
+            <h2>📋 Installation Guide</h2>
 
-<div class="container">
-    <div class="specs-section">
-        <h2>🔧 Technical Specifications</h2>
-        
-        <div class="specs-grid">
-            <div class="spec-card">
-                <h3>⚡ Electrical Specifications</h3>
-                <ul>
-                    <li><strong>Voltage:</strong> 220V Single Phase / 440V Three Phase</li>
-                    <li><strong>Frequency:</strong> 50 Hz</li>
-                    <li><strong>Insulation Class:</strong> B/F Class</li>
-                    <li><strong>Protection:</strong> IP68 for Submersible Pumps</li>
-                    <li><strong>Efficiency:</strong> 70-85% depending on model</li>
-                </ul>
-            </div>
-
-            <div class="spec-card">
-                <h3>🌊 Hydraulic Specifications</h3>
-                <ul>
-                    <li><strong>Head Range:</strong> 10-200 meters</li>
-                    <li><strong>Flow Rate:</strong> 30-150 liters/minute</li>
-                    <li><strong>Operating Temperature:</strong> 5°C to 50°C</li>
-                    <li><strong>pH Range:</strong> 6.5 to 8.5</li>
-                    <li><strong>Solid Handling:</strong> Up to 50mm particles</li>
-                </ul>
-            </div>
-
-            <div class="spec-card">
-                <h3>🏗️ Construction Materials</h3>
-                <ul>
-                    <li><strong>Casing:</strong> Cast Iron / Stainless Steel</li>
-                    <li><strong>Impeller:</strong> Brass / Stainless Steel</li>
-                    <li><strong>Shaft:</strong> Stainless Steel 304/316</li>
-                    <li><strong>Bearings:</strong> High-quality ball bearings</li>
-                    <li><strong>Seals:</strong> Mechanical seals with backup</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="guide-section">
-        <h2>📋 Installation Guide</h2>
-        
-        <div class="guide-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Site Assessment</h4>
-                    <p>Our technicians visit your location to assess water source, power availability, and installation requirements.</p>
+            <div class="guide-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Site Assessment</h4>
+                        <p>Our technicians visit your location to assess water source, power availability, and
+                            installation requirements.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Foundation Preparation</h4>
-                    <p>Prepare stable foundation and electrical connections according to pump specifications.</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Foundation Preparation</h4>
+                        <p>Prepare stable foundation and electrical connections according to pump specifications.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Pump Installation</h4>
-                    <p>Professional installation of pump with proper alignment and sealing.</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Pump Installation</h4>
+                        <p>Professional installation of pump with proper alignment and sealing.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h4>Testing & Commissioning</h4>
-                    <p>Complete testing of pump performance, electrical safety, and water flow.</p>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Testing & Commissioning</h4>
+                        <p>Complete testing of pump performance, electrical safety, and water flow.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h4>Training & Handover</h4>
-                    <p>User training on operation and basic maintenance procedures.</p>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Training & Handover</h4>
+                        <p>User training on operation and basic maintenance procedures.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="subsidies-section">
-        <h2>💰 Government Subsidies</h2>
-        <p>Take advantage of government schemes for agricultural equipment</p>
-        
-        <div class="subsidies-grid">
-            <div class="subsidy-card">
-                <h3>🌞 Solar Pump Subsidy</h3>
-                <div class="subsidy-amount">Up to 30% subsidy</div>
-                <p>Under PM-KUSUM scheme for solar agricultural pumps</p>
-                <ul>
-                    <li>Individual farmers: 30% subsidy</li>
-                    <li>FPO/SHG groups: Additional benefits</li>
-                    <li>Maximum subsidy: ₹1.5 lakhs per pump</li>
-                    <li>Applicable for pumps up to 10 HP</li>
-                </ul>
-            </div>
+    <div class="container">
+        <div class="subsidies-section">
+            <h2>💰 Government Subsidies</h2>
+            <p>Take advantage of government schemes for agricultural equipment</p>
 
-            <div class="subsidy-card">
-                <h3>🚜 Agricultural Equipment</h3>
-                <div class="subsidy-amount">Up to 40% subsidy</div>
-                <p>Under various state agricultural schemes</p>
-                <ul>
-                    <li>Subsidies for drip irrigation systems</li>
-                    <li>Water conservation equipment</li>
-                    <li>Small farmer category: Higher benefits</li>
-                    <li>Combined with solar subsidy possible</li>
-                </ul>
-            </div>
+            <div class="subsidies-grid">
+                <div class="subsidy-card">
+                    <h3>🌞 Solar Pump Subsidy</h3>
+                    <div class="subsidy-amount">Up to 30% subsidy</div>
+                    <p>Under PM-KUSUM scheme for solar agricultural pumps</p>
+                    <ul>
+                        <li>Individual farmers: 30% subsidy</li>
+                        <li>FPO/SHG groups: Additional benefits</li>
+                        <li>Maximum subsidy: ₹1.5 lakhs per pump</li>
+                        <li>Applicable for pumps up to 10 HP</li>
+                    </ul>
+                </div>
 
-            <div class="subsidy-card">
-                <h3>📋 How to Apply</h3>
-                <div class="subsidy-amount">Free Assistance</div>
-                <p>We help you with complete subsidy application process</p>
-                <ul>
-                    <li>Documentation assistance</li>
-                    <li>Application form filling</li>
-                    <li>Liaison with government agencies</li>
-                    <li>Follow-up and approval tracking</li>
-                </ul>
+                <div class="subsidy-card">
+                    <h3>🚜 Agricultural Equipment</h3>
+                    <div class="subsidy-amount">Up to 40% subsidy</div>
+                    <p>Under various state agricultural schemes</p>
+                    <ul>
+                        <li>Subsidies for drip irrigation systems</li>
+                        <li>Water conservation equipment</li>
+                        <li>Small farmer category: Higher benefits</li>
+                        <li>Combined with solar subsidy possible</li>
+                    </ul>
+                </div>
+
+                <div class="subsidy-card">
+                    <h3>📋 How to Apply</h3>
+                    <div class="subsidy-amount">Free Assistance</div>
+                    <p>We help you with complete subsidy application process</p>
+                    <ul>
+                        <li>Documentation assistance</li>
+                        <li>Application form filling</li>
+                        <li>Liaison with government agencies</li>
+                        <li>Follow-up and approval tracking</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="case-studies-section">
-        <h2>📈 Success Stories</h2>
-        
-        <div class="case-study">
-            <div class="case-header">
-                <h3>🌾 Rajesh Farm - Raichur District</h3>
-                <div class="case-stats">
-                    <span>10 HP Submersible Pump</span>
-                    <span>50% Water Savings</span>
-                    <span>ROI: 18 months</span>
+    <div class="container">
+        <div class="case-studies-section">
+            <h2>📈 Success Stories</h2>
+
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>🌾 Rajesh Farm - Raichur District</h3>
+                    <div class="case-stats">
+                        <span>10 HP Submersible Pump</span>
+                        <span>50% Water Savings</span>
+                        <span>ROI: 18 months</span>
+                    </div>
                 </div>
+                <p>"Before installing the Samudra pump, I was struggling with inconsistent water supply for my 5-acre
+                    farm.
+                    Now I have reliable irrigation throughout the year, and my crop yield has increased by 40%. The pump
+                    pays for itself!"</p>
             </div>
-            <p>"Before installing the Samudra pump, I was struggling with inconsistent water supply for my 5-acre farm. 
-            Now I have reliable irrigation throughout the year, and my crop yield has increased by 40%. The pump pays for itself!"</p>
-        </div>
 
-        <div class="case-study">
-            <div class="case-header">
-                <h3>🏭 Green Valley Resort - Kalaburagi</h3>
-                <div class="case-stats">
-                    <span>7.5 HP Solar Pump</span>
-                    <span>Zero Electricity Cost</span>
-                    <span>Payback: 3 years</span>
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>🏭 Green Valley Resort - Kalaburagi</h3>
+                    <div class="case-stats">
+                        <span>7.5 HP Solar Pump</span>
+                        <span>Zero Electricity Cost</span>
+                        <span>Payback: 3 years</span>
+                    </div>
                 </div>
+                <p>"We installed a solar water pumping system for our resort's landscaping and swimming pool.
+                    The system generates enough power for our daily needs and has eliminated our electricity bills
+                    completely."</p>
             </div>
-            <p>"We installed a solar water pumping system for our resort's landscaping and swimming pool. 
-            The system generates enough power for our daily needs and has eliminated our electricity bills completely."</p>
-        </div>
 
-        <div class="case-study">
-            <div class="case-header">
-                <h3>👨‍🌾 Community Farming - Vijayapur</h3>
-                <div class="case-stats">
-                    <span>5 HP Borewell Pump</span>
-                    <span>30% Cost Reduction</span>
-                    <span>Government Subsidy: ₹75,000</span>
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>👨‍🌾 Community Farming - Vijayapur</h3>
+                    <div class="case-stats">
+                        <span>5 HP Borewell Pump</span>
+                        <span>30% Cost Reduction</span>
+                        <span>Government Subsidy: ₹75,000</span>
+                    </div>
                 </div>
-            </div>
-            <p>"Our farming community pooled resources to install a high-capacity borewell pump. 
-            With government subsidy assistance from Mamata Enterprises, we saved significantly on costs."</p>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="warranty-section">
-        <h2>🛡️ Warranty & Support</h2>
-        
-        <div class="warranty-grid">
-            <div class="warranty-card">
-                <h3>🔧 Pump Warranty</h3>
-                <ul>
-                    <li><strong>Submersible Pumps:</strong> 2 years comprehensive warranty</li>
-                    <li><strong>Surface Pumps:</strong> 1 year warranty</li>
-                    <li><strong>Borewell Pumps:</strong> 2 years warranty</li>
-                    <li><strong>Centrifugal Pumps:</strong> 1 year warranty</li>
-                    <li><strong>Solar Pumps:</strong> 3 years on pump, 5 years on panels</li>
-                </ul>
-            </div>
-
-            <div class="warranty-card">
-                <h3>📞 Support Services</h3>
-                <ul>
-                    <li><strong>24/7 Helpline:</strong> Technical support available</li>
-                    <li><strong>On-site Service:</strong> Within 24 hours</li>
-                    <li><strong>Spare Parts:</strong> Genuine parts available</li>
-                    <li><strong>AMC Plans:</strong> Annual maintenance contracts</li>
-                    <li><strong>Emergency Repair:</strong> Same-day service</li>
-                </ul>
-            </div>
-
-            <div class="warranty-card">
-                <h3>📋 Warranty Terms</h3>
-                <ul>
-                    <li><strong>Covers:</strong> Manufacturing defects, performance issues</li>
-                    <li><strong>Excludes:</strong> Physical damage, misuse, natural disasters</li>
-                    <li><strong>Registration:</strong> Required within 30 days of purchase</li>
-                    <li><strong>Transferable:</strong> Warranty valid for original owner</li>
-                    <li><strong>Extension:</strong> Available with AMC plans</li>
-                </ul>
+                <p>"Our farming community pooled resources to install a high-capacity borewell pump.
+                    With government subsidy assistance from Mamata Enterprises, we saved significantly on costs."</p>
             </div>
         </div>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2024 Mamata Enterprises. All rights reserved.</p>
-</footer>
+    <div class="container">
+        <div class="warranty-section">
+            <h2>🛡️ Warranty & Support</h2>
 
-<script>
-    // Language switching functionality
-    let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
-    
-    // Set initial language on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        setLanguage(currentLanguage);
-    });
-    
-    function setLanguage(lang) {
-        currentLanguage = lang;
-        localStorage.setItem('selectedLanguage', lang);
-        
-        // Update all elements with data attributes
-        document.querySelectorAll('[data-en][data-kn]').forEach(element => {
-            if (lang === 'en') {
-                element.textContent = element.getAttribute('data-en');
-            } else if (lang === 'kn') {
-                element.textContent = element.getAttribute('data-kn');
-            }
+            <div class="warranty-grid">
+                <div class="warranty-card">
+                    <h3>🔧 Pump Warranty</h3>
+                    <ul>
+                        <li><strong>Submersible Pumps:</strong> 2 years comprehensive warranty</li>
+                        <li><strong>Surface Pumps:</strong> 1 year warranty</li>
+                        <li><strong>Borewell Pumps:</strong> 2 years warranty</li>
+                        <li><strong>Centrifugal Pumps:</strong> 1 year warranty</li>
+                        <li><strong>Solar Pumps:</strong> 3 years on pump, 5 years on panels</li>
+                    </ul>
+                </div>
+
+                <div class="warranty-card">
+                    <h3>📞 Support Services</h3>
+                    <ul>
+                        <li><strong>24/7 Helpline:</strong> Technical support available</li>
+                        <li><strong>On-site Service:</strong> Within 24 hours</li>
+                        <li><strong>Spare Parts:</strong> Genuine parts available</li>
+                        <li><strong>AMC Plans:</strong> Annual maintenance contracts</li>
+                        <li><strong>Emergency Repair:</strong> Same-day service</li>
+                    </ul>
+                </div>
+
+                <div class="warranty-card">
+                    <h3>📋 Warranty Terms</h3>
+                    <ul>
+                        <li><strong>Covers:</strong> Manufacturing defects, performance issues</li>
+                        <li><strong>Excludes:</strong> Physical damage, misuse, natural disasters</li>
+                        <li><strong>Registration:</strong> Required within 30 days of purchase</li>
+                        <li><strong>Transferable:</strong> Warranty valid for original owner</li>
+                        <li><strong>Extension:</strong> Available with AMC plans</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mamata Enterprises. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+
+        // Set initial language on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            setLanguage(currentLanguage);
         });
-        
-        // Handle elements with mixed content (like links with data attributes)
-        document.querySelectorAll('[data-en]').forEach(element => {
-            if (element.getAttribute('data-kn')) {
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en][data-kn]').forEach(element => {
                 if (lang === 'en') {
                     element.textContent = element.getAttribute('data-en');
                 } else if (lang === 'kn') {
                     element.textContent = element.getAttribute('data-kn');
                 }
+            });
+
+            // Handle elements with mixed content (like links with data attributes)
+            document.querySelectorAll('[data-en]').forEach(element => {
+                if (element.getAttribute('data-kn')) {
+                    if (lang === 'en') {
+                        element.textContent = element.getAttribute('data-en');
+                    } else if (lang === 'kn') {
+                        element.textContent = element.getAttribute('data-kn');
+                    }
+                }
+            });
+
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="setLanguage('${lang}')"]`).classList.add('active');
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Update font for Kannada
+            if (lang === 'kn') {
+                document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans Kannada'";
+            } else {
+                document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
             }
-        });
-        
-        // Update language buttons
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.querySelector(`[onclick="setLanguage('${lang}')"]`).classList.add('active');
-        
-        // Update HTML lang attribute
-        document.documentElement.lang = lang;
-        
-        // Update font for Kannada
-        if (lang === 'kn') {
-            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans Kannada'";
-        } else {
-            document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
         }
-    }
 
-    function showModal(type) {
-        if (type === 'underwater') {
-            document.getElementById('underwaterModal').style.display = 'block';
-        } else if (type === 'upperwater') {
-            document.getElementById('upperwaterModal').style.display = 'block';
-        } else if (type === 'solar') {
-            document.getElementById('solarModal').style.display = 'block';
-        } else if (type === 'borewell') {
-            document.getElementById('borewellModal').style.display = 'block';
-        } else if (type === 'centrifugal') {
-            document.getElementById('centrifugalModal').style.display = 'block';
+        function showModal(type) {
+            if (type === 'underwater') {
+                document.getElementById('underwaterModal').style.display = 'block';
+            } else if (type === 'upperwater') {
+                document.getElementById('upperwaterModal').style.display = 'block';
+            } else if (type === 'solar') {
+                document.getElementById('solarModal').style.display = 'block';
+            } else if (type === 'borewell') {
+                document.getElementById('borewellModal').style.display = 'block';
+            } else if (type === 'centrifugal') {
+                document.getElementById('centrifugalModal').style.display = 'block';
+            }
         }
-    }
 
-    function closeModal(type) {
-        if (type === 'underwater') {
-            document.getElementById('underwaterModal').style.display = 'none';
-        } else if (type === 'upperwater') {
-            document.getElementById('upperwaterModal').style.display = 'none';
-        } else if (type === 'solar') {
-            document.getElementById('solarModal').style.display = 'none';
-        } else if (type === 'borewell') {
-            document.getElementById('borewellModal').style.display = 'none';
-        } else if (type === 'centrifugal') {
-            document.getElementById('centrifugalModal').style.display = 'none';
+        function closeModal(type) {
+            if (type === 'underwater') {
+                document.getElementById('underwaterModal').style.display = 'none';
+            } else if (type === 'upperwater') {
+                document.getElementById('upperwaterModal').style.display = 'none';
+            } else if (type === 'solar') {
+                document.getElementById('solarModal').style.display = 'none';
+            } else if (type === 'borewell') {
+                document.getElementById('borewellModal').style.display = 'none';
+            } else if (type === 'centrifugal') {
+                document.getElementById('centrifugalModal').style.display = 'none';
+            }
         }
-    }
 
-    function inquireNow(product) {
-        alert('Product: ' + product + '\n\nPlease call us at:\n+91-9663728297\n+91-9591932635');
-    }
+        function inquireNow(product) {
+            alert('Product: ' + product + '\n\nPlease call us at:\n+91-9663728297\n+91-9591932635');
+        }
 
-    function toggleFAQ(element) {
-        const faqItem = element.parentElement;
-        faqItem.classList.toggle('active');
-    }
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
 
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        const underwaterModal = document.getElementById('underwaterModal');
-        const upperwaterModal = document.getElementById('upperwaterModal');
-        const solarModal = document.getElementById('solarModal');
-        const borewellModal = document.getElementById('borewellModal');
-        const centrifugalModal = document.getElementById('centrifugalModal');
-        
-        if (event.target === underwaterModal) {
-            underwaterModal.style.display = 'none';
-        }
-        if (event.target === upperwaterModal) {
-            upperwaterModal.style.display = 'none';
-        }
-        if (event.target === solarModal) {
-            solarModal.style.display = 'none';
-        }
-        if (event.target === borewellModal) {
-            borewellModal.style.display = 'none';
-        }
-        if (event.target === centrifugalModal) {
-            centrifugalModal.style.display = 'none';
-        }
-    }
-</script>
+        // Close modal when clicking outside of it
+        window.onclick = function (event) {
+            const underwaterModal = document.getElementById('underwaterModal');
+            const upperwaterModal = document.getElementById('upperwaterModal');
+            const solarModal = document.getElementById('solarModal');
+            const borewellModal = document.getElementById('borewellModal');
+            const centrifugalModal = document.getElementById('centrifugalModal');
 
-<!-- Google Fonts for Kannada Support -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap" rel="stylesheet">
+            if (event.target === underwaterModal) {
+                underwaterModal.style.display = 'none';
+            }
+            if (event.target === upperwaterModal) {
+                upperwaterModal.style.display = 'none';
+            }
+            if (event.target === solarModal) {
+                solarModal.style.display = 'none';
+            }
+            if (event.target === borewellModal) {
+                borewellModal.style.display = 'none';
+            }
+            if (event.target === centrifugalModal) {
+                centrifugalModal.style.display = 'none';
+            }
+        }
+    </script>
 
+    <!-- Google Fonts for Kannada Support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</body>
+
+    <!-- Category Details Modal -->
+    <div id="categoryModal" class="category-modal">
+        <div class="category-modal-content">
+            <span class="close-category-btn" onclick="closeCategoryModal()">&times;</span>
+            <div class="category-modal-header">
+                <h2 id="modalCategoryTitle">Category Types</h2>
+            </div>
+            <div id="modalCategoryTypes" class="type-list">
+                <!-- Types will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const categoryData = {
+            'home': {
+                title: 'Home Pumps (Domestic)',
+                types: [
+                    { name: '0.5 HP Mini Monobloc', desc: 'Ideal for small homes and gardens.', price: '₹4,500/-' },
+                    { name: '1.0 HP Self Priming', desc: 'Perfect for multi-story buildings.', price: '₹7,800/-' },
+                    { name: 'Regenerative Pump', desc: 'High pressure for domestic use.', price: '₹5,200/-' }
+                ]
+            },
+            'water': {
+                title: 'Water Pumps (Industrial/Agri)',
+                types: [
+                    { name: 'High Flow Centrifugal', desc: 'For large water transfer tasks.', price: '₹18,500/-' },
+                    { name: 'Agriculture Surface Pump', desc: 'Standard irrigation solutions.', price: '₹22,000/-' },
+                    { name: 'Multistage Pump', desc: 'For high head requirements.', price: '₹28,500/-' }
+                ]
+            },
+            'slow': {
+                title: 'Slow Speed Motors',
+                types: [
+                    { name: '1440 RPM Standard', desc: 'General purpose heavy duty motors.', price: '₹12,000/-' },
+                    { name: 'Belt Driven Set', desc: 'Reliable power transmission.', price: '₹15,500/-' },
+                    { name: '960 RPM High Torque', desc: 'For specialized industrial loads.', price: '₹14,500/-' }
+                ]
+            },
+            'monoblock': {
+                title: 'Monoblock Pumps',
+                types: [
+                    { name: 'Single Phase (2-5 HP)', desc: 'Small scale agriculture & domestic.', price: '₹15,000 - ₹25,000' },
+                    { name: 'Three Phase (5-15 HP)', desc: 'Large scale irrigation & factory use.', price: '₹30,000 - ₹55,000' },
+                    { name: 'Open Well Monoblock', desc: 'Submerged operation in wells.', price: '₹35,000/-' }
+                ]
+            },
+            'self-priming': {
+                title: 'Self Priming Pumps',
+                types: [
+                    { name: 'SP Series Standard', desc: 'Quick suction for overhead tanks.', price: '₹8,500/-' },
+                    { name: 'Jet Pump', desc: 'Deep suction for shallow borewells.', price: '₹9,200/-' },
+                    { name: 'Automatic Pressure Kit', desc: 'Modern domestic pressure control.', price: '₹14,500/-' }
+                ]
+            },
+            'hp-series': {
+                title: 'Samudra 2 To 15HP Series',
+                types: [
+                    { name: '2HP - 5HP Range', desc: 'Light commercial and farm use.', price: '₹15,000 - ₹28,000' },
+                    { name: '7.5HP - 10HP Range', desc: 'Industrial grade water management.', price: '₹32,000 - ₹45,000' },
+                    { name: '12.5HP - 15HP Range', desc: 'Heavy duty discharge for large estates.', price: '₹50,000 - ₹65,000' }
+                ]
+            },
+            'borewell': {
+                title: 'Borewell Submersible',
+                types: [
+                    { name: 'V4 Submersible (4")', desc: 'Standard residential borewells.', price: '₹18,000 - ₹32,000' },
+                    { name: 'V6 Submersible (6")', desc: 'Agricultural and community supply.', price: '₹35,000 - ₹50,000' },
+                    { name: 'V8 High Flow (8")', desc: 'Industrial and large scale extraction.', price: '₹55,000 - ₹80,000' }
+                ]
+            },
+            'vertical': {
+                title: 'Vertical Pumps',
+                types: [
+                    { name: 'Vertical Multistage', desc: 'Booster systems and RO plants.', price: '₹45,000/-' },
+                    { name: 'Vertical Inline', desc: 'Compact space-saving installations.', price: '₹38,000/-' },
+                    { name: 'Turbine Pumps', desc: 'High efficiency vertical extraction.', price: '₹75,000/-' }
+                ]
+            },
+            'samudra-monoblock': {
+                title: 'Samudra Special Monoblock',
+                types: [
+                    { name: 'Open Well Submersible', desc: 'Designed for underwater agricultural use.', price: '₹38,000/-' },
+                    { name: 'High Head Monoblock', desc: 'For lifting water to great heights.', price: '₹42,000/-' },
+                    { name: 'Kirloskar Compatible Series', desc: 'Industry standard mounting and performance.', price: '₹25,000/-' }
+                ]
+            },
+            'pipes': {
+                title: 'Samudra Pipes & Accessories',
+                types: [
+                    { name: 'Column Pipes (uPVC)', desc: 'Heavy duty pipes for borewells.', price: '₹300 - ₹800/mtr' },
+                    { name: 'HDPE Suction Pipes', desc: 'Flexible and durable for farm use.', price: '₹150 - ₹400/mtr' },
+                    { name: 'PVC Pressure Pipes', desc: 'For main water supply lines.', price: '₹100 - ₹250/mtr' }
+                ]
+            },
+            'dealers': {
+                title: 'Authorized Dealer Services',
+                types: [
+                    { name: 'Wholesale Supply', desc: 'Bulk orders for contractors and farms.', price: 'Contact for Quote' },
+                    { name: 'Genuine Spare Parts', desc: 'Always use original Samudra spares.', price: 'Market Rates' },
+                    { name: 'Expert Installation', desc: 'Certified technician support.', price: 'Starts ₹2,000/-' }
+                ]
+            }
+        };
+
+        function showCategoryDetails(key) {
+            const data = categoryData[key];
+            if (!data) return;
+
+            document.getElementById('modalCategoryTitle').innerText = data.title;
+            const container = document.getElementById('modalCategoryTypes');
+            container.innerHTML = '';
+
+            data.types.forEach(type => {
+                const div = document.createElement('div');
+                div.className = 'type-item';
+                div.innerHTML = `
+                    <h4>${type.name}</h4>
+                    <p>${type.desc}</p>
+                    <div class="type-price">Price: ${type.price}</div>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('categoryModal').style.display = 'block';
+        }
+
+        function closeCategoryModal() {
+            document.getElementById('categoryModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('categoryModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
